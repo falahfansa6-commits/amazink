@@ -35,7 +35,7 @@
                 </div>
             @endif  
 
-            <!-- Utilities: Search & Bulk Actions -->
+            {{-- <!-- Utilities: Search & Bulk Actions -->
             <div class="utilities-bar">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -46,7 +46,7 @@
                         Bulk Actions <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Table Section -->
             <div class="table-responsive">
@@ -83,9 +83,9 @@
                             <td class="judul-text" style="text-align: left; padding-left: 15px;">
                                 {{ $item->judul }}
                             </td>
-                            <td class="text-muted-row" style="text-align: left; max-width: 350px; word-wrap: break-word;">
-                                {{ Str::limit($item->isi, 100) }}
-                            </td>
+           <td class="text-muted-row" style="text-align: left; max-width: 350px; word-wrap: break-word;">
+    {!! $item->isi !!}
+</td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('tentang.edit',$item->id) }}" class="btn btn-edit">

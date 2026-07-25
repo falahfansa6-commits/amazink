@@ -43,11 +43,11 @@
                     <input type="text" placeholder="Cari lokasi..." name="q">
                     </form>
                 </div>
-                <div class="dropdown-box">
+                {{-- <div class="dropdown-box">
                     <button class="btn-dropdown">
                         Bulk Actions <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Table Section -->
@@ -71,8 +71,10 @@
                                 <i class="fa-solid fa-city" style="color: #94a3b8; margin-right: 8px;"></i>{{ $location->nama_kota }}
                             </td>
                             <td class="text-muted-row" style="text-align: left; max-width: 400px; word-wrap: break-word;">
-                                {{ $location->alamat }}
-                            </td>
+                              
+                            {!! $location->alamat !!}
+
+                            </>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('location.edit', $location->id) }}" class="btn btn-edit">

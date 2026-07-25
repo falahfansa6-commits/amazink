@@ -53,9 +53,9 @@
                             <td class="judul-text">{{ $item->judul }}</td>
                             
                             <!-- Kolom Deskripsi dengan memanfaatkan class baris teks bawaan -->
-                            <td class="text-muted-row">
-                                {{ $item->isi }}
-                            </td>
+                           <td class="text-muted-row">
+                            {!! $item->isi !!}
+                               </td>
                             
                             <!-- Kolom Urutan -->
                             <td>{{ $item->urutan }}</td>

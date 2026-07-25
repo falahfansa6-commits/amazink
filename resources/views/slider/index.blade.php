@@ -27,7 +27,7 @@
             @endif  
 
             <!-- Utilities: Search & Bulk Actions -->
-            <div class="utilities-bar">
+            {{-- <div class="utilities-bar">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input type="text" placeholder="Cari slider...">
@@ -37,7 +37,7 @@
                         Bulk Actions <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Table Section -->
             <div class="table-responsive">
@@ -127,9 +127,7 @@
 
     <!-- Page Footer -->
     <footer class="main-footer">
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-back" style="background: #64748b; color: #fff;">
-                        <i class="fa-solid fa-arrow-left"></i> Kembali
-                    </a>
+    
         <div class="footer-links">
             <a href="#">Dokumentasi</a>
             <a href="#">Bantuan</a>

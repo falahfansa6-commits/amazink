@@ -1,21 +1,48 @@
+@extends('layouts.admin')
 
+@section('title', 'Hubungi Kami')
 
-<!-- Memanggil file CSS dan Icon FontAwesome agar gaya visual seragam -->
+@section('content')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- jQuery (diperlukan untuk Summernote) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+    $('#editor').summernote({
+        placeholder: 'Masukkan konten...',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+});
+</script>
+
 <div class="main-wrapper">
-    <!-- Menggunakan batas max-width kecil agar layout form tetap proporsional -->
+
     <div class="container" style="max-width: 600px;">
-        
+
         <div class="card">
-            
-            <!-- Bagian Header Form -->
+
             <div class="header-section" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
                 <h1>Tambah Kontak</h1>
             </div>
 
-            <!-- Blok Pesan Error Validasi Global -->
             @if ($errors->any())
                 <div class="alert-danger">
                     <ul style="margin: 0; padding-left: 20px;">
@@ -26,58 +53,81 @@
                 </div>
             @endif
 
-            <form action="{{ route('empatkontak.store') }}" method="POST">
+            <form action="{{ route('empat-kontak.store') }}" method="POST">
                 @csrf
 
-                <!-- Dropdown Pilihan Jenis Kontak (Sudah disamakan dengan opsi edit & index) -->
+                <!-- Judul -->
                 <div class="form-group">
-                    <label for="jenis">Jenis Kontak</label>
-                    <select id="jenis" name="jenis" required>
-                        <option value="" disabled selected>-- Pilih Jenis Kontak --</option>
-                        <option value="email" {{ old('jenis') == 'email' ? 'selected' : '' }}>Email</option>
-                        <option value="kantor" {{ old('jenis') == 'kantor' ? 'selected' : '' }}>Kantor</option>
-                        <option value="telepon" {{ old('jenis') == 'telepon' ? 'selected' : '' }}>Telepon</option>
-                        <option value="whatsapp" {{ old('jenis') == 'whatsapp' ? 'selected' : '' }}>WhatsApp</option>
-                    </select>
-                </div>
-
-                <!-- Input Isi Kontak -->
-                <div class="form-group">
-                    <label for="isi">Isi Kontak</label>
-                    <input 
-                        type="text" 
-                        id="isi" 
-                        name="isi" 
-                        value="{{ old('isi') }}" 
-                        placeholder="Masukkan detail alamat, email, atau nomor..." 
+                    <label>Judul</label>
+                    <input
+                        type="text"
+                        name="judul"
+                        value="{{ old('judul') }}"
+                        placeholder="Contoh: EMAIL"
                         required>
                 </div>
 
-                <!-- Input Tautan / Link -->
+                <!-- Isi -->
                 <div class="form-group">
-                    <label for="link">Link Tautan</label>
-                    <input 
-                        type="text" 
-                        id="link" 
-                        name="link" 
-                        value="{{ old('link') }}" 
-                        placeholder="Contoh: https://wa.me/... atau mailto:..." 
+                    <label>Isi</label>
+                   <textarea id="editor" name="isi">
+        {{ old('isi', $empatkontaks->isi ?? '') }}
+    </textarea>
+                </div>
+
+                <!-- Teks Link -->
+                <div class="form-group">
+                    <label>Teks Link</label>
+                    <input
+                        type="text"
+                        name="teks_link"
+                        value="{{ old('teks_link') }}"
+                        placeholder="Contoh: Kirim Email"
                         required>
                 </div>
 
-                <!-- Kelompok Tombol Aksi menggunakan wrapper .aksi bawaan CSS -->
-                <div class="aksi" style="justify-content: flex-start; margin-top: 25px; gap: 10px;">
+                <!-- Link -->
+                <div class="form-group">
+                    <label>Link</label>
+                    <input
+                        type="text"
+                        name="link"
+                        value="{{ old('link') }}"
+                        placeholder="https://... / mailto:... / tel:..."
+                        required>
+                </div>
+
+                <!-- Urutan -->
+                <div class="form-group">
+                    <label>Urutan</label>
+                    <input
+                        type="number"
+                        name="urutan"
+                        value="{{ old('urutan', 1) }}"
+                        min="1"
+                        required>
+                </div>
+
+                <div class="aksi" style="justify-content:flex-start; margin-top:25px; gap:10px;">
+
                     <button type="submit" class="btn btn-add">
-                        <i class="fa-solid fa-floppy-disk"></i> Simpan Data
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Simpan Data
                     </button>
-                    <a href="{{ route('empatkontak.index') }}" class="btn btn-edit" style="background: #64748b; color: white;">
-                        <i class="fa-solid fa-arrow-left"></i> Batal
+
+                    <a href="{{ route('empat-kontak.index') }}" class="btn btn-edit" style="background:#64748b;color:#fff;">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Batal
                     </a>
+
                 </div>
 
             </form>
 
         </div>
+
     </div>
+
 </div>
 
+@endsection

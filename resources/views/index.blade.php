@@ -57,40 +57,36 @@
 </section>
 @endif
 
-   <!-- HASIL SABLON / SECOUNDS -->
-@if($secounds->count())
+<!-- HASIL SABLON / SECOUNDS -->
+@if($secounds)
 
 <section class="secounds-section" id="secound">
 
-    @foreach ($secounds as $item)
+    @if($secounds->gambar)
+        <img src="{{ asset('uploads/secound/' . $secounds->gambar) }}"
+             alt="{{ $secounds->judul }}"
+             style="width: 100%; height: 400px; object-fit: cover;">
+    @endif
 
-        @if($item->gambar)
-            <img src="{{ asset('uploads/secound/' . $item->gambar) }}"
-                 alt="{{ $item->judul }}"
-                 style="width: 100%; height: 400px; object-fit: cover;">
-        @endif
+    <div class="pts-section-container">
 
-        <div class="pts-section-container">
-
-            <div class="pts-left-title">
-                <h2 class="pts-main-heading">
-                    {{ $item->judul }}
-                </h2>
-            </div>
-
-            <div class="pts-right-description">
-                <p class="pts-small-text">
-                    {!! nl2br(e($item->isi)) !!}
-                </p>
-            </div>
-
+        <div class="pts-left-title">
+            <h2 class="pts-main-heading">
+                {{ $secounds->judul }}
+            </h2>
         </div>
 
-    @endforeach
+        <div class="pts-right-description">
+            {!! $secounds->isi !!}
+        </div>
+
+    </div>
 
 </section>
 
 @endif
+
+
   <!-- OUR VALUES -->
 @if($ourvalues->count())
 
@@ -127,9 +123,8 @@
                 <h3 class="ov-card-title">
                     {{ $item->judul }}
                 </h3>
-
-                <p class="ov-card-text">
-                    {!! nl2br(e($item->isi)) !!}
+                   <p class="ov-card-text">
+                    {!! $item->isi !!}
                 </p>
 
             </div>
@@ -146,9 +141,9 @@
 
 @endif
     <!-- FOOTER -->
-    <footer class="printex-footer">
+     <footer class="printex-footer">
         @include('layouts.footer')
-    </footer>
+    </footer> 
 
     <!-- JAVASCRIPT SLIDER -->
     <script>

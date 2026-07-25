@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
 <!-- Memanggil file CSS dan Icon FontAwesome agar visual tabel admin seragam -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
@@ -10,7 +11,7 @@
 <div class="main-wrapper">
     <div class="container">
         
-        <!-- Notifikasi Sukses bawaan dari slider.css -->
+        <!-- Notifikasi Sukses dengan gaya alert modern -->
         @if(session('success'))
             <div class="alert-success">
                 <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
@@ -19,9 +20,9 @@
 
         <div class="card">
             
-            <!-- Header Section diselaraskan menggunakan flex global -->
-            <div class="header-section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h1 style="margin: 0;">Data Produk</h1>
+            <!-- Header Section diselaraskan dengan halaman admin lainnya -->
+            <div class="header-section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap;">
+                <h1 style="margin: 0;">Data Produk 1</h1>
                 
                 <!-- Tombol Tambah Data -->
                 <a href="{{ route('produk1.create') }}" class="btn btn-add">
@@ -34,11 +35,11 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th width="60">No</th>
+                            <th width="80">No</th>
                             <th width="120">Gambar</th>
                             <th>Judul</th>
                             <th>Isi</th>
-                            <th width="200">Aksi</th>
+                            <th width="180">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,18 +48,24 @@
                             <!-- Kolom No -->
                             <td>{{ $loop->iteration }}</td>
                             
-                            <!-- Kolom Gambar menggunakan thumbnail wrapper standar -->
+                            <!-- Kolom Gambar dengan preview yang rapi -->
                             <td>
-                                <div class="img-thumbnail-wrapper" style="width: 80px; height: 80px;">
-                                    <img src="{{ asset($item->gambar) }}" alt="Gambar Produk">
+                                <div class="img-preview-box">
+                                    @if($item->gambar)
+                                        <img src="{{ asset($item->gambar) }}" alt="Gambar Produk 2">
+                                    @else
+                                        <i class="fa-regular fa-image" style="font-size: 20px; color: #cbd5e1;"></i>
+                                    @endif
                                 </div>
                             </td>
                             
                             <!-- Kolom Judul -->
-                            <td class="judul-row">{{ $item->judul }}</td>
+                            <td class="text-bold">{{ $item->judul }}</td>
                             
                             <!-- Kolom Isi/Deskripsi -->
-                            <td class="text-muted-row">{{ $item->isi }}</td>
+                            <td class="text-muted-row">
+                                {!! $item->isi !!}
+                            </td>
                             
                             <!-- Kolom Aksi -->
                             <td>
@@ -72,7 +79,7 @@
                                     <form action="{{ route('produk1.destroy', $item->id) }}" method="POST" style="margin: 0; display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-delete" onclick="return confirm('Yakin ingin menghapus?')">
+                                        <button class="btn btn-delete" onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="fa-solid fa-trash"></i> Hapus
                                         </button>
                                     </form>
@@ -81,9 +88,9 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" style="text-align: center; padding: 40px 20px;">
-                                <i class="fa-regular fa-folder-open" style="font-size: 28px; margin-bottom: 10px; display: block; color: #cbd5e1;"></i>
-                                <span class="text-muted-row">Belum ada data produk.</span>
+                            <td colspan="5" class="text-empty-row">
+                                <i class="fa-regular fa-folder-open"></i>
+                                Belum ada data produk 2.
                             </td>
                         </tr>
                         @endforelse

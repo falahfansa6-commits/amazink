@@ -60,7 +60,7 @@
 
                             <!-- Kolom Deskripsi -->
                             <td style="color: #64748b;">
-                                {{ \Illuminate\Support\Str::limit($service->isi, 80) }}
+                             {!! $service->isi !!}
                             </td>
 
                             <!-- Kolom Urutan -->
@@ -100,6 +100,7 @@
                     </tbody>
                 </table>
             </div>
+            <br> 
   <a href="{{ route('admin.layanan') }}" class="btn btn-back" style="background: #64748b; color: #fff;">
                         <i class="fa-solid fa-arrow-left"></i> Kembali
                     </a>

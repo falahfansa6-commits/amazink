@@ -12,8 +12,6 @@ class BerandaController extends Controller
 {
     public function index()
     {
-
-    
         // Slider
         $sliderBeranda = Slider::where('posisi', 'beranda')
             ->where('status', 1)
@@ -31,8 +29,8 @@ class BerandaController extends Controller
         // Services
         $services = Service::orderBy('urutan', 'asc')->get();
 
-        // Secound
-        $secounds = Secound::all();
+        // Secound (ambil satu data saja)
+        $secounds = Secound::first();
 
         return view('index', compact(
             'sliderBeranda',

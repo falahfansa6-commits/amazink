@@ -7,7 +7,30 @@
 <!-- Menggunakan stylesheet slider.css dan ikon FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
-
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- jQuery (diperlukan untuk Summernote) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <Script>
+$(document).ready(function() {
+    $('#editor').summernote({
+        placeholder: 'Masukkan konten...',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+});
+</script>
 <div class="main-wrapper">
     <!-- Menggunakan batas max-width kecil agar layout form tetap proporsional -->
     <div class="container" style="max-width: 600px;">
@@ -61,14 +84,9 @@
                 <!-- Input Deskripsi -->
                 <div class="form-group" style="margin-top: 15px;">
                     <label for="isi">Deskripsi <span style="color: #ef4444;">*</span></label>
-                    <textarea 
-                        id="isi" 
-                        name="isi" 
-                        rows="6" 
-                        maxlength="200"
-                        placeholder="Masukkan deskripsi layanan"
-                        class="@error('isi') is-invalid @enderror"
-                        required>{{ old('isi', $service->isi) }}</textarea>
+                   <textarea id="editor" name="isi">
+        {{ old('isi', $service->isi ?? '') }}
+    </textarea>
                     <small id="deskCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;"></small>
                     @error('isi')
                         <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
@@ -119,8 +137,8 @@
     const deskCount = document.getElementById('deskCount');
 
     function updateCounter() {
-        judulCount.textContent = judul.value.length + " / 30 karakter";
-        deskCount.textContent = isi.value.length + " / 200 karakter";
+        judulCount.textContent = judul.value.length + " / 35 karakter";
+        deskCount.textContent = isi.value.length + " / 250 karakter";
     }
 
     judul.addEventListener('input', updateCounter);

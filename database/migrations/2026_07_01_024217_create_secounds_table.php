@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('secounds', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('isi');
+            $table->longText('isi');
            $table->string('gambar');
             $table->timestamps();
         });

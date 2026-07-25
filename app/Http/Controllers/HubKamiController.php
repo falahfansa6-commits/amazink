@@ -106,7 +106,7 @@ class HubKamiController extends Controller
     {
         $hub_kami->delete();
 
-        return redirect()->route('hub.index')
+        return redirect()->route('hub_kami.index')
             ->with('success', 'Data berhasil dihapus');
     }
 }

@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kontak;
-
+use App\Models\EmpatKontak;
 
 class KontakController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $kontak = Kontak::first();
-        return view('kontak', compact('kontak'));
-    }
+        $empatkontaks = EmpatKontak::orderBy('urutan')->get();
 
+        return view('kontak', compact('empatkontaks'));
+    }
 }

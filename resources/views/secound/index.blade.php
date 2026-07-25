@@ -69,7 +69,9 @@
                             
                             <!-- Kolom Deskripsi (dibatasi 100 karakter agar rapi) -->
                             <td style="color: #64748b;">
-                                {{ \Illuminate\Support\Str::limit($item->isi, 100) }}
+                            
+                           {!! $item->isi !!}
+
                             </td>
                             
                             <!-- Kolom Aksi -->

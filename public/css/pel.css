@@ -1,0 +1,486 @@
+/* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    color: #222222;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. SLIDER SECTION
+   ========================================================================== */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-height: 550px;
+    overflow: hidden;
+    background-color: #111111;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    max-height: 550px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide.empty-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    color: #ffffff;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(216, 12, 24, 0.8);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ==========================================================================
+   3. PRINTEX HERO & SERVICES SECTION
+   ========================================================================== */
+.printex-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.printex-section .printex-top {
+    background: #f3f3f3;
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.printex-section .printex-left {
+    flex: 1;
+    min-width: 280px;
+}
+
+.printex-section .printex-logo {
+    width: 180px;
+    margin-bottom: 30px;
+}
+
+.printex-section .printex-logo img {
+    width: 100%;
+    display: block;
+}
+
+.printex-section .printex-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.printex-section .printex-title h1 {
+    font-size: 64px;
+    line-height: 1;
+    color: #d80c18;
+    font-weight: 700;
+}
+
+.printex-section .printex-arrow {
+    width: 60px;
+    height: 60px;
+}
+
+.printex-section .printex-arrow img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.printex-section .printex-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.printex-section .printex-desc {
+    max-width: 480px;
+    color: #b91f1f;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    border-left: 3px solid #d80c18;
+    padding-left: 20px;
+}
+
+.printex-section .printex-services {
+    background: #d80c18;
+    padding: 60px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.printex-section .printex-card {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.printex-section .printex-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.printex-section .printex-card h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 10px;
+    color: #ffffff;
+}
+
+.printex-section .printex-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ffffff;
+}
+
+.empty-text {
+    color: #ffffff;
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   4. SECTION "THE PRODUCTS" - PRECISION MATCHING REFERENCE IMAGE
+   ========================================================================== */
+#theproduk.ks-full-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    min-height: 520px;
+    background-color: #000000;
+}
+
+/* SISI KIRI: Foto Mesin/Cetak */
+#theproduk .ks-box-top-left {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* SISI KANAN: Background Merah & Kartu Produk */
+#theproduk .ks-box-top-right {
+    background-color: #d80c18;
+    color: #ffffff;
+    padding: 45px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header "the products" + Panah */
+#theproduk .ks-products-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: lowercase;
+    letter-spacing: -0.5px;
+}
+
+/* Ikon Panah Lingkaran Putih */
+#theproduk .ks-arrow-circle {
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+#theproduk .ks-arrow-circle svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+/* Grid Kategori Produk 2 Kolom */
+#theproduk .ks-products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Kartu Box Kategori Produk */
+#theproduk .ks-product-card {
+    background-color: rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 16px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#theproduk .ks-product-card:hover {
+    background-color: rgba(0, 0, 0, 0.22);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+#theproduk .ks-product-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    line-height: 1.25;
+}
+
+#theproduk .ks-product-card p {
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   5. PROCESS SECTIONS (.item-section)
+   ========================================================================== */
+.item-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 80px);
+    max-width: 1400px;
+    min-height: 480px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.item-section:hover {
+    border-color: rgba(216, 12, 24, 0.3);
+    box-shadow: 0 12px 30px rgba(216, 12, 24, 0.08);
+}
+
+.item-section .item-left {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-right: 1px solid #f0f0f0;
+}
+
+.item-section .item-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff5f5;
+    padding: 6px 14px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.item-section .item-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.item-section .item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.item-section .item-badge-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d80c18;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.item-section .item-content {
+    margin: auto 0;
+}
+
+.item-section .item-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.item-section .item-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #d80c18;
+    background: rgba(216, 12, 24, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.item-section .item-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.2;
+}
+
+.item-section .item-desc {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.item-section .item-right {
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.item-section .item-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.item-section .item-img {
+    max-width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.item-section:hover .item-img {
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .printex-section .printex-top {
+        padding: 40px;
+    }
+
+    .printex-section .printex-title h1 {
+        font-size: 48px;
+    }
+
+    #theproduk.ks-full-page-container {
+        grid-template-columns: 1fr;
+    }
+
+    #theproduk .ks-box-top-left {
+        min-height: 320px;
+    }
+
+    #theproduk .ks-box-top-right {
+        padding: 40px 30px;
+    }
+
+    .item-section {
+        grid-template-columns: 1fr;
+        width: calc(100% - 40px);
+    }
+
+    .item-section .item-left {
+        padding: 40px;
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+    }
+}
+
+@media (max-width: 576px) {
+    .printex-section .printex-top,
+    .printex-section .printex-services {
+        padding: 30px 20px;
+    }
+
+    #theproduk .ks-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #theproduk .ks-products-header {
+        font-size: 30px;
+    }
+
+    .item-section {
+        width: calc(100% - 20px);
+        margin: 15px auto;
+    }
+
+    .item-section .item-left {
+        padding: 25px 20px;
+    }
+
+    .item-section .item-title {
+        font-size: 26px;
+    }
+}

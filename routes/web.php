@@ -21,7 +21,6 @@ use App\Models\Location;
 use App\Models\Tentang;
 use App\Http\Controllers\TeleponController;
 use App\Http\Controllers\TheprodukimageController;
-use App\Http\Controllers\Admin\EmpatKontakController;
 use App\Http\Controllers\HubKamiController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AboutController;
@@ -29,7 +28,9 @@ use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\HubKontakController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\WebsiteKontakController;
 
+Route::get('/kontak', [WebsiteKontakController::class, 'index']);
 
 
 // Halaman kontak (form)
@@ -37,14 +38,6 @@ Route::get('/kontak', function () {
     return view('kontak');
 })->name('kontak');
 
-// Simpan data form
-Route::post('/hub_kami', [HubKamiController::class, 'store'])
-    ->name('hub_kami.store');
-
-// Halaman admin untuk melihat data
-Route::get('/hub_kami', [HubKamiController::class, 'index'])
-    ->name('hub.index');
-    Route::resource('hub_kami', HubKamiController::class);
 
 
 
@@ -65,19 +58,6 @@ Route::get('/kontak', [KontakController::class, 'index'])
 
     
 
-Route::resource('slider', SliderController::class);
-Route::resource('location', LocationController::class);
-Route::resource('tentang', TentangController::class);
-Route::resource('ourvalues', OurValueController::class);
-Route::resource('ourvalueimage', OurValueImageController::class);
-Route::resource('produk1', Produk1Controller::class);
-Route::resource('produk2', Produk2Controller::class);
-Route::resource('produk3', Produk3Controller::class);
-Route::resource('secound', SecoundController::class);
-Route::resource('service', ServiceController::class);
-Route::resource('theproduk', TheprodukController::class);
-Route::resource('theprodukimage', TheprodukimageController::class);
-Route::resource('empatkontak', EmpatKontakController::class);
 
 
 
@@ -93,11 +73,6 @@ Route::post('/admin/baru/update', [BaruController::class, 'update'])->name('admi
 
 Route::get('/telepon', [TeleponController::class, 'index'])
     ->name('telepon');
-
-
-
-
-
 
 Route::get('/kontak', [KontakController::class, 'index'])
     ->name('kontak');
@@ -123,8 +98,31 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
 
     Route::get('/kontak', [HubKontakController::class, 'index'])
            ->name('admin.hubkontak');
+
+    Route::resource('slider', SliderController::class);
+
+Route::resource('location', LocationController::class);
+Route::resource('tentang', TentangController::class);
+Route::resource('ourvalues', OurValueController::class);
+Route::resource('ourvalueimage', OurValueImageController::class);
+Route::resource('produk1', Produk1Controller::class);
+Route::resource('produk2', Produk2Controller::class);
+Route::resource('produk3', Produk3Controller::class);
+Route::resource('secound', SecoundController::class);
+Route::resource('service', ServiceController::class);
+Route::resource('theproduk', TheprodukController::class);
+Route::resource('theprodukimage', TheprodukimageController::class);
+
+
+Route::post('/hub_kami', [HubKamiController::class, 'store'])
+    ->name('hub_kami.store');
+
+Route::get('/hub_kami', [HubKamiController::class, 'index'])
+    ->name('hub.index');
+    Route::resource('hub_kami', HubKamiController::class);
+    Route::resource('empat-kontak', App\Http\Controllers\EmpatKontakController::class);
   
-});
+ });
 
 //search
 Route::get('/search', [SearchController::class, 'index'])->name('search');

@@ -13,8 +13,7 @@
 </head>
 <body>
 
-  <!-- ========================= -->
-<!-- NAVBAR MIRIP GAMBAR -->
+  
 
     <nav >
         @include('layouts.navbar')
@@ -96,12 +95,12 @@
         </label>
 
         <textarea
-            name="des"
+            name="isi"
             class="hk-textarea-field"
             rows="5"
-            placeholder="Tulis kebutuhan Anda...">{{ old('des') }}</textarea>
+            placeholder="Tulis kebutuhan Anda...">{{ old('isi') }}</textarea>
 
-        @error('des')
+        @error('isi')
             <small style="color:red">{{ $message }}</small>
         @enderror
     </div>
@@ -119,80 +118,93 @@
    <div class="ic-cards-section-wrapper">
     <div class="ic-cards-grid">
 
-        <!-- Email -->
-        <div class="ic-contact-card">
-            <div>
-                <div class="ic-card-icon-box">✉</div>
-                <div class="ic-card-label">Email</div>
-                <h3 class="ic-card-main-info">
-                    {{ $email->isi ?? '' }}
-                </h3>
-                <p class="ic-card-sub-desc">Kami akan merespons secepat mungkin.</p>
-            </div>
+     @php
+    $email = $empatkontaks->where('urutan', 1)->first();
+    $kantor = $empatkontaks->where('urutan', 2)->first();
+    $telepon = $empatkontaks->where('urutan', 3)->first();
+    $whatsapp = $empatkontaks->where('urutan', 4)->first();
+@endphp
 
-            <a href="{{ $email->link ?? '#' }}" class="ic-card-action-link">
-                Kirim Email ↗
-            </a>
+<!-- Email -->
+<div class="ic-contact-card">
+    <div>
+        <div class="ic-card-icon-box">✉</div>
+        <div class="ic-card-label">{{ $email->judul ?? 'Email' }}</div>
 
-        </div>
+        <h3 class="ic-card-main-info">
+            {!! $email->isi !!}
+        </h3>
 
-        <!-- Kantor -->
-        <div class="ic-contact-card">
-            <div>
-                <div class="ic-card-icon-box">📍</div>
-                <div class="ic-card-label">Kantor</div>
-                <h3 class="ic-card-main-info">
-                    {{ $kantor->isi ?? '' }}
-                </h3>
-                <p class="ic-card-sub-desc">
-                    Mari ngobrol langsung dan temukan solusi sablon terbaik.
-                </p>
-            </div>
+        <p class="ic-card-sub-desc">
+            Kami akan merespons secepat mungkin.
+        </p>
+    </div>
 
-            <a href="{{ $kantor->link ?? '#' }}" target="_blank" class="ic-card-action-link ic-link-green">
-                Buka Maps ↗
-            </a>
+    <a href="{{ $email->link ?? '#' }}" class="ic-card-action-link">
+        Kirim Email ↗
+    </a>
+</div>
 
-        </div>
+<!-- Kantor -->
+<div class="ic-contact-card">
+    <div>
+        <div class="ic-card-icon-box">📍</div>
+        <div class="ic-card-label">{{ $kantor->judul ?? 'Kantor' }}</div>
 
-        <!-- Telepon -->
-        <div class="ic-contact-card">
-            <div>
-                <div class="ic-card-icon-box">📞</div>
-                <div class="ic-card-label">Telepon</div>
-                <h3 class="ic-card-main-info">
-                    {{ $telepon->isi ?? '' }}
-                </h3>
-                <p class="ic-card-sub-desc">
-                    Tersedia Senin-Jumat, pukul 08:00 - 17:00 WIB. <br>
-                    Sabtu, pukul 08:00 - 14:00 WIB
-                </p>
-            </div>
+        <h3 class="ic-card-main-info">
+            {!! $kantor->isi !!}
+        </h3>
 
-            <a href="{{ $telepon->link ?? '#' }}" class="ic-card-action-link">
-                Hubungi Sekarang ↗
-            </a>
+        <p class="ic-card-sub-desc">
+            Mari ngobrol langsung dan temukan solusi sablon terbaik.
+        </p>
+    </div>
 
-        </div>
+    <a href="{{ $kantor->link ?? '#' }}" target="_blank" class="ic-card-action-link ic-link-green">
+        Buka Maps ↗
+    </a>
+</div>
 
-        <!-- WhatsApp -->
-        <div class="ic-contact-card ic-featured-green">
-            <div>
-                <div class="ic-card-icon-box">💬</div>
-                <div class="ic-card-label">WhatsApp Chat</div>
-                <h3 class="ic-card-main-info">
-                    {{ $whatsapp->isi ?? '' }}
-                </h3>
-                <p class="ic-card-sub-desc">
-                    Butuh bantuan cepat? Tim support kami siap di sini.
-                </p>
-            </div>
+<!-- Telepon -->
+<div class="ic-contact-card">
+    <div>
+        <div class="ic-card-icon-box">📞</div>
+        <div class="ic-card-label">{{ $telepon->judul ?? 'Telepon' }}</div>
 
-            <a href="{{ $whatsapp->link ?? '#' }}" target="_blank" class="ic-card-action-link">
-                Mulai Chat ↗
-            </a>
+        <h3 class="ic-card-main-info">
+           {!! $telepon->isi !!}
+        </h3>
 
-        </div>
+        <p class="ic-card-sub-desc">
+            Tersedia Senin–Jumat, pukul 08:00 – 17:00 WIB. <br>
+            Sabtu, pukul 08:00 – 14:00 WIB
+        </p>
+    </div>
+
+    <a href="{{ $telepon->link ?? '#' }}" class="ic-card-action-link">
+        Hubungi Sekarang ↗
+    </a>
+</div>
+
+<!-- WhatsApp -->
+<div class="ic-contact-card ic-featured-green">
+    <div>
+        <div class="ic-card-icon-box">💬</div>
+        <div class="ic-card-label">{{ $whatsapp->judul ?? 'WhatsApp Chat' }}</div>
+
+        <h3 class="ic-card-main-info">
+            {{ $whatsapp->isi ?? '' }}
+        </h3>
+
+        <p class="ic-card-sub-desc">
+            Butuh bantuan cepat? Tim support kami siap di sini.
+        </p>
+    </div>
+
+    <a href="{{ $whatsapp->link ?? '#' }}" target="_blank" class="ic-card-action-link">
+        Mulai Chat ↗
+    </a>
+</div>
 
     </div>
 

@@ -74,7 +74,7 @@
                     @enderror
                 </div>
 
-                <!-- Input Email -->
+                {{-- <!-- Input Email -->
                 <div class="form-group" style="margin-top: 15px;">
                     <label for="email">Email <span style="color: #ef4444;">*</span></label>
                     <input 
@@ -90,8 +90,27 @@
                             <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
                         </small>
                     @enderror
-                </div>
+                </div> --}}
 
+
+
+                 <!-- Input No WhatsApp -->
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="email">Email <span style="color: #ef4444;">*</span></label>
+                    <input 
+                        type="text" 
+                        id="email" 
+                        name="email" 
+                        value="{{ old('email', $hub_kami->email) }}" 
+                        placeholder="Contoh@gmail.com"
+                        class="@error('email') is-invalid @enderror"
+                        required>
+                    @error('no_wa')
+                        <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
+                            <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
+                        </small>
+                    @enderror
+                </div>
                 <!-- Input Pesan -->
                 <div class="form-group" style="margin-top: 15px;">
                     <label for="isi">Pesan <span style="color: #ef4444;">*</span></label>

@@ -46,7 +46,7 @@
                             <td class="judul-text">Kontak Printex</td>
                             <td>
                                 <div class="aksi">
-                                    <a href="{{ route('empatkontak.index') }}" class="btn btn-edit">
+                                    <a href="{{ route('empat-kontak.index') }}" class="btn btn-edit">
                                         <i class="fa-solid fa-pen"></i> Edit
                                     </a>
                                 </div>

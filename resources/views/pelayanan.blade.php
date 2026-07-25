@@ -1,6 +1,3 @@
-<!-- ========================= -->
-<!-- FILE : index.html         -->
-<!-- ========================= -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRINTEX | Beranda</title>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        /* Anda bisa menambahkan custom CSS internal di sini jika diperlukan */
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/pel.css') }}">
 </head>
 <body>
 
@@ -34,7 +25,7 @@
                     <img src="{{ asset('uploads/slider/'.$slider->gambar) }}" alt="{{ $slider->judul }}">
                 </div>
             @empty
-                <div class="slide">
+                <div class="slide empty-slide">
                     <h3>Tidak ada slider</h3>
                 </div>
             @endforelse
@@ -43,10 +34,8 @@
         <button class="next" onclick="nextSlide()">❯</button>
     </section>
 
-    <br>
-
     <!-- LAYANAN SECTION -->
-   <section id="service" class="printex-section">
+    <section id="service" class="printex-section">
         <div class="printex-top">
             <div class="printex-left">
                 <div class="printex-logo">
@@ -70,124 +59,138 @@
             @forelse($services as $service)
                 <div class="printex-card">
                     <h3>{{ $service->judul }}</h3>
-                    <p>{{ $service->deskripsi }}</p>
+                    <p>{!! $service->isi !!}</p>
                 </div>
             @empty
-                <p>Belum ada layanan.</p>
+                <p class="empty-text">Belum ada layanan.</p>
             @endforelse
         </div>
     </section>
 
-    <!-- GRID PRODUCTS & PROCESS 01 -->
-   <div id="theproduk" class="ks-full-page-container"> 
+    <!-- GRID PRODUCTS ("THE PRODUCTS") -->
+    <div id="theproduk" class="ks-full-page-container"> 
         @if($theprodukimage)
             <div class="ks-box-top-left" style="background-image: url('{{ asset($theprodukimage->gambar) }}');"></div>
         @else
-            <div class="ks-box-top-left" style="background-color: #ccc;"></div>
+            <div class="ks-box-top-left" style="background-color: #222222;"></div>
         @endif
 
         <div class="ks-box-top-right">
             <div class="ks-products-header">
                 <span>the products</span>
-                <div class="ks-arrow-image-container">
-                    <img src="{{ asset('img/panahputih.png') }}" alt="Arrow">
+                <div class="ks-arrow-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#d80c18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                        <polyline points="17 7 17 17 7 17"></polyline>
+                    </svg>
                 </div>
             </div>
             
             <div class="ks-products-grid">
                 @forelse($theproduk as $item)
-                    <div class="ks-product-item">
+                    <div class="ks-product-card">
                         <h3>{{ $item->judul }}</h3>
-                        <p>{{ $item->isi }}</p>
+                        <p>{!! $item->isi !!}</p>
                     </div>
                 @empty
-                    <div class="ks-product-item">
+                    <div class="ks-product-card">
                         <h3>Belum Ada Produk</h3>
                         <p>Silakan tambahkan data melalui halaman admin.</p>
                     </div>
                 @endforelse
             </div>
         </div>
+    </div> 
 
-       <div id="produk1" class="ks-box-bottom-left"> 
-            @foreach ($produk1 as $item)
-                <div class="ks-process-title">
-                    <h2><span class="ks-number">01</span>{{ $item->judul }}</h2>
-                    <p class="ks-process-desc">{{ $item->isi }}</p>
-                </div>
-            @endforeach
-            
-            <div class="ks-process-footer">
-                <div class="ks-arrow-image-container">
+    <!-- PROCESS 01 SECTION -->
+    <section id="produk1" class="item-section"> 
+        <div class="item-left"> 
+            <div class="item-badge">
+                <div class="item-icon">
                     <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
                 </div>
-                <span>the process</span>
-            </div>
-        </div>
-
-        @foreach($produk1 as $item)
-            <div class="ks-box-bottom-right" style="background-image: url('{{ asset($item->gambar) }}');"></div>
-        @endforeach
-    </div>
-
-    <!-- PROCESS 02 SECTION -->
-  <section id="produk2" class="ptx-section-container">
-        <div class="ptx-left-side">
-            <div class="ptx-header-wrapper">
-                <div class="ptx-process-badge">
-                    <svg class="ptx-arrow-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="50" fill="#d10000"/>
-                        <line x1="66" y1="34" x2="34" y2="66" stroke="white" stroke-width="9" stroke-linecap="square"/>
-                        <path d="M58 66H34V42" stroke="white" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter"/>
-                    </svg>
-                    <span class="ptx-process-text">the process</span>
-                </div>
+                <span class="item-badge-text">the process</span>
             </div>
 
-            <div class="ptx-content-body">
-                <div class="ptx-title-group">
-                    <span class="ptx-main-number">02</span>
-                    @foreach($produk2 as $item)
-                        <h2 class="ptx-main-title">{{ $item->judul }}</h2>
-                    @endforeach
-                </div>
-                @foreach($produk2 as $item)
-                    <p class="ptx-main-desc">{{ $item->isi }}</p>
+            <div class="item-content">
+                @foreach ($produk1 as $item)
+                    <div class="item-header">
+                        <span class="item-num">01</span>
+                        <h2 class="item-title">{{ $item->judul }}</h2>
+                    </div>
+                    <p class="item-desc">{!! $item->isi !!}</p>
                 @endforeach
             </div>
         </div>
 
-        <div class="ptx-right-side-image">
-            <div class="ptx-picture-holder">
+        <div class="item-right">
+            <div class="item-frame">
+                @foreach($produk1 as $item)
+                    <img class="item-img" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS 02 SECTION -->
+    <section id="produk2" class="item-section">
+        <div class="item-left">
+            <div class="item-badge">
+                <div class="item-icon">
+                    <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
+                </div>
+                <span class="item-badge-text">the process</span>
+            </div>
+
+            <div class="item-content">
                 @foreach($produk2 as $item)
-                    <img class="ptx-showcase-img" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
+                    <div class="item-header">
+                        <span class="item-num">02</span>
+                        <h2 class="item-title">{{ $item->judul }}</h2>
+                    </div>
+                    <p class="item-desc">{!! $item->isi !!}</p>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="item-right">
+            <div class="item-frame">
+                @foreach($produk2 as $item)
+                    <img class="item-img" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
                 @endforeach
             </div>
         </div>
     </section>
 
     <!-- PROCESS 03 SECTION -->
-   <div id="produk3" class="kp-main-card-container"> 
-        <div class="kp-text-section">
-            <div class="kp-title-group">
-                <span class="kp-badge-number">03</span>
+    <section id="produk3" class="item-section"> 
+        <div class="item-left">
+            <div class="item-badge">
+                <div class="item-icon">
+                    <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
+                </div>
+                <span class="item-badge-text">the process</span>
+            </div>
+
+            <div class="item-content">
                 @foreach($produk3 as $item)
-                    <h2 class="kp-main-title">{{ $item->judul }}</h2>
+                    <div class="item-header">
+                        <span class="item-num">03</span>
+                        <h2 class="item-title">{{ $item->judul }}</h2>
+                    </div>
+                    <p class="item-desc">{!! $item->deskripsi ?? $item->isi !!}</p>
                 @endforeach
             </div>
-            @foreach($produk3 as $item)
-                <p class="kp-paragraph-desc">{{ $item->deskripsi }}</p>
-            @endforeach
         </div>
 
-        <div class="kp-image-section">
-            <div class="kp-picture-holder">
+        <div class="item-right">
+            <div class="item-frame">
                 @foreach($produk3 as $item)
-                    <img class="kp-showcase-img" src="{{ asset('upload/produk3/' . $item->gambar) }}" alt="{{ $item->judul }}">
+                    <img class="item-img" src="{{ asset('upload/produk3/' . $item->gambar) }}" alt="{{ $item->judul }}">
                 @endforeach
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- FOOTER -->
     <footer class="printex-footer">
@@ -201,6 +204,7 @@
         let index = 0;
 
         function nextSlide() {
+            if(slides.length <= 1) return;
             index++;
             if(index >= slides.length) {
                 index = 0;
@@ -209,6 +213,7 @@
         }
 
         function prevSlide() {
+            if(slides.length <= 1) return;
             index--;
             if(index < 0) {
                 index = slides.length - 1;
@@ -220,8 +225,9 @@
             slider.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // Jalankan auto-play slider setiap 4 detik
-        setInterval(nextSlide, 4000);
+        if(slides.length > 1) {
+            setInterval(nextSlide, 4000);
+        }
     </script>
 </body>
 </html>

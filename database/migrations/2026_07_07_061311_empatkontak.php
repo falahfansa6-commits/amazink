@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('empatkontaks', function (Blueprint $table) {
             $table->id();
-            $table->enum('jenis', [
-                'email',
-                'kantor',
-                'telepon',
-                'whatsapp'
-            ]);
-            $table->string('isi');
-            $table->string('link');
-            $table->timestamps();
+             $table->string('judul');
+             $table->longText('isi');
+             $table->string('teks_link');
+             $table->integer('link');
+     $table->string('urutan');
+            $table->timestamps();  
         });
     }
 

@@ -3,22 +3,47 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<!-- Memanggil file CSS dan Icon FontAwesome agar gaya visual form seragam -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- jQuery (diperlukan untuk Summernote) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <Script>
+        $(document).ready(function() {
+    $('#editor').summernote({
+        placeholder: 'Masukkan konten...',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+});
+</script>
 <div class="main-wrapper">
-    <!-- Menggunakan batas max-width kecil agar layout form tetap proporsional -->
+ 
     <div class="container" style="max-width: 600px;">
         
         <div class="card">
             
-            <!-- Bagian Header Form -->
+            
             <div class="header-section" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
                 <h1>Edit Our Value</h1>
             </div>
 
-            <!-- Blok Pesan Error Validasi Global -->
+            
             @if($errors->any())
                 <div class="alert-danger">
                     <ul style="margin: 0; padding-left: 20px;">
@@ -29,12 +54,12 @@
                 </div>
             @endif
 
-            <!-- Form update dengan data yang sudah terisi otomatis -->
+          
             <form action="{{ route('ourvalues.update', $ourvalue->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
-                <!-- Input Judul -->
+               
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input 
@@ -49,15 +74,12 @@
                 <!-- Input Deskripsi -->
                 <div class="form-group">
                     <label for="isi">Deskripsi</label>
-                    <textarea 
-                        id="isi"
-                        name="isi" 
-                        rows="5" 
-                        placeholder="Tuliskan deskripsi lengkap di sini..." 
-                        required>{{ old('isi', $ourvalue->isi) }}</textarea>
+                    <textarea id="editor" name="isi">
+        {{ old('isi', $ourvalue->isi ?? '') }}
+    </textarea>
                 </div>
 
-                <!-- Input Urutan -->
+            
                 <div class="form-group">
                     <label for="urutan">Urutan Halaman</label>
                     <input 

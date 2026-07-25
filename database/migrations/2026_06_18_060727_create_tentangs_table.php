@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tentangs', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->text('isi');
+            $table->longText('isi');
             $table->string('gambar')->nullable();
             $table->timestamps();
         });

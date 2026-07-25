@@ -33,9 +33,9 @@ class ServiceController extends Controller
 
         $request->validate([
 
-            'judul'=>'required|max:30',
+            'judul'=>'required|max:35',
 
-            'isi'=>'required|max:200',
+            'isi'=>'required|max:250',
 
             'urutan'=>'required|integer'
 
@@ -81,9 +81,9 @@ class ServiceController extends Controller
 
         $request->validate([
 
-            'judul'=>'required|max:30',
+            'judul'=>'required|max:35',
 
-            'isi'=>'required|max:200',
+            'isi'=>'required|max:250',
 
             'urutan'=>'required|integer'
 

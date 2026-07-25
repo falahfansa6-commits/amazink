@@ -27,39 +27,38 @@ class TentangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
-        ]);
+   public function store(Request $request)
+{
+    $request->validate([
+        'judul' => 'required',
+        'isi' => 'required',
+        'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+    ]);
 
-        $gambarPath = null;
-        if ($request->hasFile('gambar')) {
+    $gambarPath = null;
+
+    if ($request->hasFile('gambar')) {
 
         $file = $request->file('gambar');
-             $namaFile = time().'_'.$file->getClientOriginalName();
+        $namaFile = time().'_'.$file->getClientOriginalName();
 
-             $file->move(
-               public_path('uploads/tentang'),
-               $namaFile
-             );
+        $file->move(
+            public_path('uploads/tentang'),
+            $namaFile
+        );
 
-             $gambar = 'uploads/tentang/'.$namaFile;
-        }
-
-        Tentang::create([
-            'judul'=>$request->judul,
-            'isi' =>$request->isi,
-            'gambar'=>$gambarPath
-        ]);
-      
-        return redirect()->route('tentang.index')
-        ->with('success', 'Berhasil di tambahkan');
-        
+        $gambarPath = 'uploads/tentang/'.$namaFile;
     }
 
+    Tentang::create([
+        'judul' => $request->judul,
+        'isi' => $request->isi,
+        'gambar' => $gambarPath
+    ]);
+
+    return redirect()->route('tentang.index')
+        ->with('success', 'Berhasil ditambahkan');
+}
     /**
      * Display the specified resource.
      */
@@ -82,42 +81,46 @@ class TentangController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $tentang = Tentang::findOrFail($id);
-        $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
-        ]);
-     
-        $gambarPath = $tentang->gambar;
+{
+    $tentang = Tentang::findOrFail($id);
 
-        if (
-            $tentang->gambar &&
-            file_exists(public_path($tentang->gambar))
-        ) {
-           unlink(public_path($tentang->gambar));
+    $request->validate([
+        'judul' => 'required',
+        'isi' => 'required',
+        'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+    ]);
+
+    $gambarPath = $tentang->gambar;
+
+    if ($request->hasFile('gambar')) {
+
+        // Hapus gambar lama
+        if ($tentang->gambar && file_exists(public_path($tentang->gambar))) {
+            unlink(public_path($tentang->gambar));
         }
- $file = $request->file('gambar');
 
-            $namaFile = time().'_'.$file->getClientOriginalName();
+        // Upload gambar baru
+        $file = $request->file('gambar');
+        $namaFile = time().'_'.$file->getClientOriginalName();
 
-            $file->move(
-                public_path('uploads/tentang'),
-                $namaFile
-            );
-             $gambarPath = 'uploads/tentang/'.$namaFile;
-    
-  $tentang->update([
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'gambar' => $gambarPath
-        ]);
+        $file->move(
+            public_path('uploads/tentang'),
+            $namaFile
+        );
 
-        return redirect()
-            ->route('tentang.index')
-            ->with('success','Data berhasil diupdate');
+        $gambarPath = 'uploads/tentang/'.$namaFile;
     }
+
+    $tentang->update([
+        'judul' => $request->judul,
+        'isi' => $request->isi,
+        'gambar' => $gambarPath
+    ]);
+
+    return redirect()
+        ->route('tentang.index')
+        ->with('success', 'Data berhasil diupdate');
+}
 
     /**
      * Remove the specified resource from storage.

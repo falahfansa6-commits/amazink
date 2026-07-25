@@ -63,7 +63,9 @@
                             <td class="text-bold">{{ $item->judul }}</td>
                             
                             <!-- Kolom Isi/Deskripsi -->
-                            <td class="text-muted-row">{{ $item->isi }}</td>
+                            <td class="text-muted-row">
+                                {!! $item->isi !!}
+                            </td>
                             
                             <!-- Kolom Aksi -->
                             <td>

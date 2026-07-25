@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class empatkontak extends Model
+class EmpatKontak extends Model
 {
     protected $fillable = [
-        'jenis',
+        'judul',
         'isi',
-        'link'
+        'link',
+        'urutan'
     ];
 }

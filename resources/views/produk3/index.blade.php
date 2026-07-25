@@ -34,9 +34,9 @@
                     <thead>
                         <tr>
                             <th width="80">No</th>
+                            <th width="180">Gambar</th>
                             <th>Judul</th>
                             <th>Deskripsi</th>
-                            <th width="180">Gambar</th>
                             <th width="200">Aksi</th>
                         </tr>
                     </thead>
@@ -47,17 +47,8 @@
                             <td>
                                 <span class="order-number">{{ $loop->iteration }}</span>
                             </td>
-                            
-                            <!-- Kolom Judul (Teks Tebal Otomatis) -->
-                            <td class="judul-text">{{ $item->judul }}</td>
-                            
-                            <!-- Kolom Deskripsi dengan pembatasan teks agar rapi -->
-                            <td class="text-muted-row">
-                                {{ Str::limit($item->isi, 80) }}
-                            </td>
-                            
-                            <!-- Kolom Gambar memanfaatkan fitur Hover Overlay dari CSS -->
-                            <td>
+
+                              <td>
                                 @if($item->gambar)
                                     <div class="image-wrapper">
                                         <img src="{{ asset('upload/produk3/'.$item->gambar) }}" alt="{{ $item->judul }}" class="preview">
@@ -72,6 +63,17 @@
                                     </div>
                                 @endif
                             </td>
+                            
+                            <!-- Kolom Judul (Teks Tebal Otomatis) -->
+                            <td class="judul-text">{{ $item->judul }}</td>
+                            
+                            <!-- Kolom Deskripsi dengan pembatasan teks agar rapi -->
+                            <td class="text-muted-row">
+                               {!! $item->isi !!}
+                            </td>
+                            
+                            <!-- Kolom Gambar memanfaatkan fitur Hover Overlay dari CSS -->
+                           
                             
                             <!-- Kolom Aksi Tombol -->
                             <td>
@@ -101,16 +103,16 @@
                     </tbody>
                 </table>
             </div>
-
+  <br>
+  <a href="{{ route('admin.layanan') }}" class="btn btn-back" style="background: #64748b; color: #fff;">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali
+                    </a>
         </div>
     </div>
     
     <!-- Footer Terintegrasi bawaan CSS -->
     <footer class="main-footer"
-     <br>
-  <a href="{{ route('admin.layanan') }}" class="btn btn-back" style="background: #64748b; color: #fff;">
-                        <i class="fa-solid fa-arrow-left"></i> Kembali
-                    </a>>
+   
         <span class="footer-copyright">&copy; {{ date('Y') }} Admin Dashboard. All rights reserved.</span>
         <div class="footer-links">
             <a href="#">Privacy Policy</a>

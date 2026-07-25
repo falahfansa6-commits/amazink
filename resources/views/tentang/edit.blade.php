@@ -13,6 +13,31 @@
     <!-- Tambahkan CDN FontAwesome untuk ikon tombol -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- jQuery (diperlukan untuk Summernote) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+    $('#editor').summernote({
+        placeholder: 'Masukkan konten...',
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+});
+</script>
 </head>
 <body>
 
@@ -58,12 +83,9 @@
 
                 <div class="form-group">
                     <label for="isi">Isi Konten / Deskripsi</label>
-                    <textarea 
-                        id="isi"
-                        name="isi"
-                        rows="6"
-                        placeholder="Masukkan detail teks informasi tentang kami"
-                        required>{{ old('isi', $tentang->isi) }}</textarea>
+                   <textarea id="editor" name="isi">
+        {{ old('isi', $tentang->isi ?? '') }}
+    </textarea>
                 </div>
 
                 @if($tentang->gambar)

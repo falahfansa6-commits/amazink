@@ -29,9 +29,9 @@
 
                 <br>
 
-                <p>
-                    {!! nl2br(e($tentang->isi)) !!}
-                </p>
+                <td>
+    {!! \Illuminate\Support\Str::limit($tentang->isi, 100) !!}
+</td>
 
             </div>
 
@@ -39,7 +39,7 @@
 
                 @if($tentang->gambar)
 
-                    <img src="{{ asset($tentang->gambar) }}"
+                    <img src="{{ asset($tentang->gambar ??'') }}"
                          alt="{{ $tentang->judul }}">
 
                 @else
@@ -102,7 +102,8 @@
                         </div>
 
                         <div class="lk-location-address">
-                            {!! nl2br(e($location->alamat)) !!}
+                            {!! $location->alamat !!}
+                           
                         </div>
 
                     </div>

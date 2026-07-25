@@ -58,7 +58,8 @@
 
                             <!-- Kolom Isi/Deskripsi -->
                             <td class="text-muted-row">
-                                {{ Str::limit($item->isi, 80) }}
+                                {!! $item->isi !!}
+                                
                             </td>
 
                             <!-- Kolom Urutan -->

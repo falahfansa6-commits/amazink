@@ -43,7 +43,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="judul-text">Printing Solution</td>
+                            <td class="judul-text">Produk layanan</td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('service.index') }}" class="btn btn-edit">
@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="judul-text">Our Value</td>
+                            <td class="judul-text">Produk</td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('theproduk.index') }}" class="btn btn-edit">
