@@ -74,24 +74,6 @@
                     @enderror
                 </div>
 
-                {{-- <!-- Input Email -->
-                <div class="form-group" style="margin-top: 15px;">
-                    <label for="email">Email <span style="color: #ef4444;">*</span></label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        value="{{ old('email', $hub_kami->email) }}" 
-                        placeholder="Masukkan alamat email"
-                        class="@error('email') is-invalid @enderror"
-                        required>
-                    @error('email')
-                        <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
-                            <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
-                        </small>
-                    @enderror
-                </div> --}}
-
 
 
                  <!-- Input No WhatsApp -->
