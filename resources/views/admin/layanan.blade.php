@@ -32,22 +32,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <!-- Menggunakan kelas judul-text agar teks tebal dan rata kiri seperti About -->
-                            <td class="judul-text">Slider</td>
-                            <td>
-                                <div class="aksi">
-                                    <a href="{{ route('slider.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
-                                    </a>
-                                </div>
-                            </td>
+                           
+                           
                         </tr>
                         <tr>
                             <td class="judul-text">Produk layanan</td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('service.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -57,7 +50,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('theprodukimage.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -67,7 +60,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('theproduk.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -78,7 +71,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('produk1.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -91,7 +84,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('produk2.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -102,7 +95,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('produk3.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>

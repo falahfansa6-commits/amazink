@@ -19,7 +19,7 @@ class LocationController extends Controller
         $locations->where('nama_kota', 'like', '%' . $request->q . '%');
     }
 
-    $locations = $locations->paginate(5);
+    $locations = $locations->get();
 
     return view('location.index', compact('locations'));
 }

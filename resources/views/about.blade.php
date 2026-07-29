@@ -30,7 +30,7 @@
                 <br>
 
                 <td>
-    {!! \Illuminate\Support\Str::limit($tentang->isi, 100) !!}
+    {!! $tentang->isi !!}
 </td>
 
             </div>

@@ -40,12 +40,12 @@
         
         <div class="card">
             
-            <!-- Bagian Header Form -->
+         
             <div class="header-section" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
                 <h1>Tambah Produk 1</h1>
             </div>
 
-            <!-- Blok Pesan Error Validasi Global -->
+           
             @if($errors->any())
                 <div class="alert-danger">
                     <p style="margin: 0; font-weight: bold;">
@@ -54,11 +54,11 @@
                 </div>
             @endif
 
-            <!-- Form tambah produk 2 -->
+            
             <form action="{{ route('produk1.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Input Judul -->
+                
                 <div class="form-group">
                     <label for="judul">Judul <span style="color: #ef4444;">*</span></label>
                     <input 

@@ -11,6 +11,8 @@
 body{
     background:#f1f5f9;
     min-height:100vh;
+    /* Mencegah overflow horizontal pada perangkat mobile */
+    overflow-x: hidden; 
 }
 
 .main-wrapper {
@@ -131,7 +133,6 @@ h1{
     gap: 8px;
 }
 
-
 .btn{
     display:inline-flex;
     justify-content:center;
@@ -182,6 +183,7 @@ h1{
     overflow-x:auto;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
 }
 
 .admin-table{
@@ -200,10 +202,9 @@ h1{
     font-size: 14px;
     font-weight: 600;
     text-align: center;
-    letter-spacing: 0.03em; /* Perbaikan dari letter-wide */
+    letter-spacing: 0.03em;
 }
 
-/* Agar judul kolom "Judul" mengikuti teksnya yang rata kiri */
 .admin-table th:first-child,
 .admin-table td:first-child {
     text-align: left;
@@ -285,7 +286,6 @@ h1{
     font-size: 20px;
 }
 
-
 .badge{
     display:inline-block;
     padding:5px 14px;
@@ -317,7 +317,6 @@ h1{
     border: 1px solid #e2e8f0;
 }
 
-
 .aksi{
     display:flex;
     justify-content:center;
@@ -337,7 +336,6 @@ h1{
     color:#94a3b8;
     font-style: italic;
 }
-
 
 .pagination-container {
     display: flex;
@@ -385,7 +383,6 @@ h1{
     background: #fff;
 }
 
-
 .main-footer {
     max-width: 1240px;
     width: 100%;
@@ -419,7 +416,6 @@ h1{
     font-weight: 500;
 }
 
-
 .form-group {
     margin-bottom: 20px;
     display: flex;
@@ -435,7 +431,6 @@ h1{
     color: #334155;
     font-size: 14px;
 }
-
 
 .form-group input[type="text"],
 .form-group input[type="number"],
@@ -482,37 +477,6 @@ h1{
     background: #e2e8f0;
 }
 
-/* ==========================
-   RESPONSIVE LAYOUTS
-========================== */
-@media (max-width:768px){
-    .header-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .utilities-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .search-box {
-        width: 100%;
-    }
-    .btn-dropdown {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .pagination-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .main-footer {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-}
-
-/* Mengatur kotak pembungkus gambar */
 .img-preview-box {
     width: 100px !important;
     height: 100px !important;
@@ -524,10 +488,117 @@ h1{
     justify-content: center;
 }
 
-/* Mengatur gambar di dalam tabel agar pas & tidak meluap */
 .img-preview-box img,
 .data-table td img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover; /* Agar gambar tidak gepeng/terdistorsi */
+    object-fit: cover;
+}
+
+/* ==========================
+   PENYESUaIAN RESPONSIVE ALL DEVICES
+========================== */
+
+/* Tablet & Mobile Orientasi Medium (<= 1024px) */
+@media (max-width: 1024px) {
+    .main-wrapper {
+        padding: 24px 12px 16px 12px;
+    }
+    .card {
+        padding: 20px;
+    }
+}
+
+/* Tablet Potret & Mobile Landscape (<= 768px) */
+@media (max-width: 768px){
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .header-section .btn-add,
+    .header-section .btn {
+        width: 100%;
+    }
+
+    .utilities-bar {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .btn-dropdown {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .pagination-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .main-footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="file"],
+    .form-group select,
+    .form-group textarea {
+        max-width: 100%;
+    }
+}
+
+/* Mobile Portrait / Smartphone Kecil (<= 480px) */
+@media (max-width: 480px) {
+    .main-wrapper {
+        padding: 15px 8px 12px 8px;
+    }
+
+    .card {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    .pagination-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .alert-success {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .form-group input[type="file"]::file-selector-button {
+        padding: 4px 6px;
+        margin-right: 6px;
+        font-size: 12px;
+    }
 }

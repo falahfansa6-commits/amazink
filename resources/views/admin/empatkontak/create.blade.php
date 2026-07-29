@@ -80,8 +80,8 @@
                     <label>Teks Link</label>
                     <input
                         type="text"
-                        name="teks_link"
-                        value="{{ old('teks_link') }}"
+                        name="text_link"
+                        value="{{ old('text_link') }}"
                         placeholder="Contoh: Kirim Email"
                         required>
                 </div>

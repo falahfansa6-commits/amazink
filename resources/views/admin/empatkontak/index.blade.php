@@ -49,11 +49,11 @@
                             </td>
 
                             <td class="text-muted-row">
-                                {{ $kontak->isi }}
+                                {!! $kontak->isi !!}
                             </td>
 
-                            <td class="text-muted-row">
-                                {{ $kontak->teks_link }}
+                            <td class="text-muted-row">  
+                                {{ $kontak->text_link }}
                             </td>
 
                             <td class="link-row">

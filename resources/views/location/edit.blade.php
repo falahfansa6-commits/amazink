@@ -83,7 +83,7 @@
 
                 <div class="form-group">
                     <label for="alamat">Alamat Lengkap</label>
-                <textarea id="editor" name="isi">
+                <textarea id="editor" name="isi" rows="5">
         {{ old('alamat', $location->alamat ?? '') }}
     </textarea>
                 </div>

@@ -35,7 +35,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('slider.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -45,7 +45,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('secound.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -55,7 +55,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('ourvalueimage.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -65,7 +65,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('ourvalues.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>

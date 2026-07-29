@@ -80,7 +80,7 @@
 
                 <div class="form-group">
                     <label for="alamat">Alamat Lengkap</label>
-                    <textarea id="editor" name="alamat">
+                    <textarea id="editor" name="alamat" rows="5">
         {{ old('alamat', $locations->alamat ?? '') }}
     </textarea>
                 </div>

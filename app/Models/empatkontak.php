@@ -9,6 +9,7 @@ class EmpatKontak extends Model
     protected $fillable = [
         'judul',
         'isi',
+        'text_link',
         'link',
         'urutan'
     ];

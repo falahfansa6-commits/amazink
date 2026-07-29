@@ -111,7 +111,7 @@ class SearchController extends Controller
                 'model' => EmpatKontak::class,
                 'route' => route('kontak'),
                 'anchor' => 'empatkontak',
-                'columns' => ['jenis','isi','link'],
+                'columns' => ['judul','isi','link'],
             ],
 
             [
@@ -145,6 +145,7 @@ class SearchController extends Controller
 
         }
 
-        return redirect()->back()->with('error','Data tidak ditemukan');
+        return redirect()->back()
+    ->with('error', 'Tidak ada hasil yang ditemukan untuk "' . $keyword . '"');
     }
 }

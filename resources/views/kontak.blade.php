@@ -193,7 +193,7 @@
         <div class="ic-card-label">{{ $whatsapp->judul ?? 'WhatsApp Chat' }}</div>
 
         <h3 class="ic-card-main-info">
-            {{ $whatsapp->isi ?? '' }}
+           {!! $whatsapp->isi !!}
         </h3>
 
         <p class="ic-card-sub-desc">

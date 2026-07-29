@@ -37,7 +37,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('hub_kami.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -47,7 +47,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('empat-kontak.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>

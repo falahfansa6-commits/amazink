@@ -32,12 +32,14 @@ class EmpatKontakController extends Controller
         $request->validate([
  'judul' => 'required',
  'isi' => 'required',
+ 'text_link' => 'required',
  'link' => 'required',
  'urutan' => 'required|integer'
         ]);
         EmpatKontak::create([
      'judul' => $request->judul,
      'isi' => $request->isi,
+     'text_link' => $request->text_link,
      'link' => $request->link,
      'urutan' => $request->urutan
         ]);
@@ -72,12 +74,14 @@ class EmpatKontakController extends Controller
         $request->validate([
            'judul' => 'required',
            'isi' => 'required',
+           'text_link' => 'required',
            'link' => 'required',
            'urutan' => 'required|integer'
         ]);
         $empatKontak->update($request->all());
+        return redirect()->route('empat-kontak.index');
     }
-
+  
     /**
      * Remove the specified resource from storage.
      */

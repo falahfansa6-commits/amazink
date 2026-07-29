@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('isi');
+            $table->string('text_link');
             $table->text('link');
             $table->integer('urutan')->default(1);
             $table->timestamps();

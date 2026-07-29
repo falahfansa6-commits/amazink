@@ -45,7 +45,7 @@ if ($query) {
         $request->validate([
             'judul'  => 'required|max:255',
             'isi'    => 'required',
-            'gambar' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'gambar' => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
         ]);
 
         $namaGambar = null;
@@ -92,7 +92,7 @@ if ($query) {
         $request->validate([
             'judul'  => 'required|max:255',
             'isi'    => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
         ]);
 
         $data = [

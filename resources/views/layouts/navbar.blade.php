@@ -37,6 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
         name="k"
         placeholder="Cari..."
         value="{{ request('k') }}">
+
+        @if(session('error'))
+    <div class="search-error">
+        {{ session('error') }}
+    </div>
+@endif
         
 
 </form>

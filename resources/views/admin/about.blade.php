@@ -20,7 +20,7 @@
                 Selamat datang di Dashboard Admin <b>Printex</b>. Silakan pilih menu yang ingin dikelola.
             </p>
 
-            <!-- Menambahkan pembungkus responsif dan kelas tabel admin -->
+           
             <div class="table-responsive">
                 <table class="admin-table">
                     <thead>
@@ -31,12 +31,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <!-- Menambahkan kelas agar judul teks tebal dan rata kiri -->
+                           
                             <td class="judul-text">Tentang Printex</td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('tentang.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
@@ -46,7 +46,7 @@
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('location.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Edit
+                                        <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
                             </td>
