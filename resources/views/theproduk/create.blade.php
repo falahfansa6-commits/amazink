@@ -66,7 +66,7 @@
                         type="text" 
                         id="judul" 
                         name="judul" 
-                        maxlength="20"
+                        maxlength="30"
                         value="{{ old('judul') }}" 
                         placeholder="Masukkan judul produk (maksimal 20 karakter)"
                         class="@error('judul') is-invalid @enderror"

@@ -95,7 +95,7 @@ class HubKamiController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect()->route('hub.index')
+        return redirect()->route('hub_kami.index')
             ->with('success', 'Data berhasil diperbarui');
     }
 

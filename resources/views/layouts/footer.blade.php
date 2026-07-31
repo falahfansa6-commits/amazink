@@ -106,13 +106,13 @@
 
                <div class="printex-social">
 
-            <a href="https://wa.me/6285196093295"
+            <a href="wa.me/6285196093295"
                target="_blank"
                class="social-item">
                 <img src="{{ asset('img/logo-wa.png') }}" alt="WhatsApp">
             </a>
 
-            <a href="https://www.instagram.com/printex.official"
+            <a href="https://www.instagram.com/printex.official?igsh=d3RmZTdrZzVhdDI2"
                target="_blank"
                class="social-item">
                 <img src="{{ asset('img/logo-ig.png') }}" alt="Instagram">

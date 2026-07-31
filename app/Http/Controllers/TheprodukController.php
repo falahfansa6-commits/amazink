@@ -31,7 +31,7 @@ class TheprodukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required| max:20',
+            'judul' => 'required| max:40',
             'isi' => 'required',
             'urutan' => 'required|integer'
         ]);
@@ -68,7 +68,7 @@ class TheprodukController extends Controller
     public function update(Request $request, Theproduk $theproduk)
     {
         $request->validate([
-            'judul' => 'required|max:30',
+            'judul' => 'required|max:40',
             'isi' => 'required',
             'urutan' => 'required|integer'
         ]);

@@ -27,28 +27,28 @@ class EmpatKontakController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
- 'judul' => 'required',
- 'isi' => 'required',
- 'text_link' => 'required',
- 'link' => 'required',
- 'urutan' => 'required|integer'
-        ]);
-        EmpatKontak::create([
-     'judul' => $request->judul,
-     'isi' => $request->isi,
-     'text_link' => $request->text_link,
-     'link' => $request->link,
-     'urutan' => $request->urutan
-        ]);
+   public function store(Request $request)
+{
+    $request->validate([
+        'judul' => 'required',
+        'isi' => 'required',
+        'text_link' => 'required',
+        'link' => 'required',
+        'urutan' => 'required|integer',
+    ]);
 
-        EmpatKontak::create($request->all());
-        return redirect()->route('empat-kontak.index')
-        ->with('success', 'Data berhasil Ditambah');
+    EmpatKontak::create([
+        'judul' => $request->judul,
+        'isi' => $request->isi,
+        'text_link' => $request->text_link,
+        'link' => $request->link,
+        'urutan' => $request->urutan,
+    ]);
 
-    }
+    return redirect()
+        ->route('empat-kontak.index')
+        ->with('success', 'Data berhasil ditambah');
+}
 
     /**
      * Display the specified resource.

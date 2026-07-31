@@ -80,8 +80,8 @@
 
         <!-- Menu Tambahan di Bawah -->
         <div class="login-footer">
-            <a href="#" class="footer-link">Lupa Kata Sandi?</a>
-            <p>Butuh Bantuan? <a href="#" class="footer-link-highlight">Hubungi IT Support</a></p>
+            <a class="footer-link">Lupa Kata Sandi?</a>
+            <p>Butuh Bantuan? <a href="wa.me/+6285136436973" class="footer-link-highlight">Hubungi IT Support</a></p>
         </div>
     </div>
     

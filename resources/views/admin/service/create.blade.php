@@ -89,14 +89,14 @@
                    <textarea id="editor" name="isi"
                    
                     rows="6" 
-                        maxlength="200"
+                        maxlength="250"
                         placeholder="Masukkan deskripsi layanan"
                         class="@error('isi') is-invalid @enderror"
                         required>
         {{ old('isi', $service->isi ?? '') }}
     </textarea> 
                       
-                    <small id="deskCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;">0 / 200 karakter</small>
+                    <small id="deskCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;">0 / 250 karakter</small>
                     @error('isi')
                         <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
                             <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
