@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -10,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
@@ -132,7 +132,7 @@
         <div class="ic-card-label">{{ $email->judul ?? 'Email' }}</div>
 
         <h3 class="ic-card-main-info">
-            {!! $email->isi !!}
+            {!! $email->isi ?? '' !!}
         </h3>
 
         <p class="ic-card-sub-desc">
@@ -152,7 +152,7 @@
         <div class="ic-card-label">{{ $kantor->judul ?? 'Kantor' }}</div>
 
         <h3 class="ic-card-main-info">
-            {!! $kantor->isi !!}
+            {!! $kantor->isi ??''!!}
         </h3>
 
         <p class="ic-card-sub-desc">
@@ -172,7 +172,7 @@
         <div class="ic-card-label">{{ $telepon->judul ?? 'Telepon' }}</div>
 
         <h3 class="ic-card-main-info">
-           {!! $telepon->isi !!}
+           {!! $telepon->isi ??''!!}
         </h3>
 
         <p class="ic-card-sub-desc">
@@ -193,7 +193,7 @@
         <div class="ic-card-label">{{ $whatsapp->judul ?? 'WhatsApp Chat' }}</div>
 
         <h3 class="ic-card-main-info">
-           {!! $whatsapp->isi !!}
+           {!! $whatsapp->isi ??''!!}
         </h3>
 
         <p class="ic-card-sub-desc">
@@ -232,6 +232,132 @@
 
 </div>
 </section>
+
+ <div class="floating-menu" id="floatingMenu">
+    <a href="https://wa.me/0821-3333-9489"
+    class="floating-item whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://instagram.com/printex.salatiga"
+    class="floating-item instagram" target="_blank">
+    <i class="fab fa-instagram"></i>
+    </a>
+
+    <button class="floating-button" id="floatingButton">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <script>
+
+const floatingMenu = document.getElementById('floatingMenu');
+const floatingButton = document.getElementById('floatingButton');
+
+let isDragging = false;
+let startX;
+let startY;
+let startLeft;
+let startTop;
+
+
+/* ==========================
+   KLIK TOMBOL
+========================== */
+
+floatingButton.addEventListener('click', function () {
+
+    if (!isDragging) {
+        floatingMenu.classList.toggle('active');
+    }
+
+});
+
+
+/* ==========================
+   MULAI DRAG
+========================== */
+
+floatingButton.addEventListener('pointerdown', function(e) {
+
+    isDragging = false;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = floatingMenu.getBoundingClientRect();
+
+    startLeft = rect.left;
+    startTop = rect.top;
+
+    floatingButton.setPointerCapture(e.pointerId);
+
+});
+
+
+/* ==========================
+   GERAKKAN TOMBOL
+========================== */
+
+floatingButton.addEventListener('pointermove', function(e) {
+
+    if (!floatingButton.hasPointerCapture(e.pointerId)) {
+        return;
+    }
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        isDragging = true;
+    }
+
+    if (isDragging) {
+
+        let newLeft = startLeft + dx;
+        let newTop = startTop + dy;
+
+        const maxLeft =
+            window.innerWidth - floatingMenu.offsetWidth;
+
+        const maxTop =
+            window.innerHeight - floatingMenu.offsetHeight;
+
+        newLeft = Math.max(
+            0,
+            Math.min(newLeft, maxLeft)
+        );
+
+        newTop = Math.max(
+            0,
+            Math.min(newTop, maxTop)
+        );
+
+        floatingMenu.style.left = newLeft + 'px';
+        floatingMenu.style.top = newTop + 'px';
+
+        floatingMenu.style.right = 'auto';
+        floatingMenu.style.bottom = 'auto';
+    }
+
+});
+
+
+/* ==========================
+   SELESAI DRAG
+========================== */
+
+floatingButton.addEventListener('pointerup', function(e) {
+
+    floatingButton.releasePointerCapture(e.pointerId);
+
+    setTimeout(() => {
+        isDragging = false;
+    }, 50);
+
+});
+
+</script>
 <footer class="printex-footer">
 @include('layouts.footer')
 

@@ -6,6 +6,7 @@
     <title>PRINTEX | Beranda</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/pel.css') }}">
 </head>
 <body>
@@ -85,96 +86,186 @@
         </div>
     </div> 
 
-    <!-- PROCESS 01 SECTION -->
-    <section id="produk1" class="item-section"> 
-        <div class="item-left"> 
-            <div class="item-badge">
-                <div class="item-icon">
-                    <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
-                </div>
-                <span class="item-badge-text">the process</span>
+    @foreach($produk as $item)
+
+<section id="produk{{ $item->urutan }}" class="item-section">
+
+    <div class="item-left">
+
+        <div class="item-badge">
+            <div class="item-icon">
+                <img src="{{ asset('img/panah ke atas.png') }}" alt="">
             </div>
 
-            <div class="item-content">
-                @foreach ($produk1 as $item)
-                    <div class="item-header">
-                        <span class="item-num">01</span>
-                        <h2 class="item-title">{{ $item->judul }}</h2>
-                    </div>
-                    <p class="item-desc">{!! $item->isi !!}</p>
-                @endforeach
-            </div>
+            <span class="item-badge-text">
+                the process
+            </span>
         </div>
 
-        <div class="item-right">
-            <div class="item-frame">
-                @foreach($produk1 as $item)
-                    <img class="item-img" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
-                @endforeach
-            </div>
-        </div>
-    </section>
+        <div class="item-content">
 
-    <!-- PROCESS 02 SECTION -->
-    <section id="produk2" class="item-section">
-        <div class="item-left">
-            <div class="item-badge">
-                <div class="item-icon">
-                    <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
-                </div>
-                <span class="item-badge-text">the process</span>
+            <div class="item-header">
+
+                <span class="item-num">
+                    {{ str_pad($item->urutan,2,'0',STR_PAD_LEFT) }}
+                </span>
+
+                <h2 class="item-title">
+                    {{ $item->judul }}
+                </h2>
+
             </div>
 
-            <div class="item-content">
-                @foreach($produk2 as $item)
-                    <div class="item-header">
-                        <span class="item-num">02</span>
-                        <h2 class="item-title">{{ $item->judul }}</h2>
-                    </div>
-                    <p class="item-desc">{!! $item->isi !!}</p>
-                @endforeach
-            </div>
+            <p class="item-desc">
+                {!! $item->isi !!}
+            </p>
+
         </div>
 
-        <div class="item-right">
-            <div class="item-frame">
-                @foreach($produk2 as $item)
-                    <img class="item-img" src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}">
-                @endforeach
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- PROCESS 03 SECTION -->
-    <section id="produk3" class="item-section"> 
-        <div class="item-left">
-            <div class="item-badge">
-                <div class="item-icon">
-                    <img src="{{ asset('img/panah ke atas.png') }}" alt="Arrow">
-                </div>
-                <span class="item-badge-text">the process</span>
-            </div>
+    <div class="item-right">
 
-            <div class="item-content">
-                @foreach($produk3 as $item)
-                    <div class="item-header">
-                        <span class="item-num">03</span>
-                        <h2 class="item-title">{{ $item->judul }}</h2>
-                    </div>
-                    <p class="item-desc">{!! $item->deskripsi ?? $item->isi !!}</p>
-                @endforeach
-            </div>
+        <div class="item-frame">
+
+            <img class="item-img"
+                 src="{{ asset($item->gambar) }}"
+                 alt="{{ $item->judul }}">
+
         </div>
 
-        <div class="item-right">
-            <div class="item-frame">
-                @foreach($produk3 as $item)
-                    <img class="item-img" src="{{ asset('upload/produk3/' . $item->gambar) }}" alt="{{ $item->judul }}">
-                @endforeach
-            </div>
-        </div>
-    </section>
+    </div>
 
+</section>
+
+@endforeach
+
+
+      <div class="floating-menu" id="floatingMenu">
+    <a href="https://wa.me/0821-3333-9489"
+    class="floating-item whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://instagram.com/printex.salatiga"
+    class="floating-item instagram" target="_blank">
+    <i class="fab fa-instagram"></i>
+    </a>
+
+    <button class="floating-button" id="floatingButton">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <script>
+
+const floatingMenu = document.getElementById('floatingMenu');
+const floatingButton = document.getElementById('floatingButton');
+
+let isDragging = false;
+let startX;
+let startY;
+let startLeft;
+let startTop;
+
+
+/* ==========================
+   KLIK TOMBOL
+========================== */
+
+floatingButton.addEventListener('click', function () {
+
+    if (!isDragging) {
+        floatingMenu.classList.toggle('active');
+    }
+
+});
+
+
+/* ==========================
+   MULAI DRAG
+========================== */
+
+floatingButton.addEventListener('pointerdown', function(e) {
+
+    isDragging = false;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = floatingMenu.getBoundingClientRect();
+
+    startLeft = rect.left;
+    startTop = rect.top;
+
+    floatingButton.setPointerCapture(e.pointerId);
+
+});
+
+
+/* ==========================
+   GERAKKAN TOMBOL
+========================== */
+
+floatingButton.addEventListener('pointermove', function(e) {
+
+    if (!floatingButton.hasPointerCapture(e.pointerId)) {
+        return;
+    }
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        isDragging = true;
+    }
+
+    if (isDragging) {
+
+        let newLeft = startLeft + dx;
+        let newTop = startTop + dy;
+
+        const maxLeft =
+            window.innerWidth - floatingMenu.offsetWidth;
+
+        const maxTop =
+            window.innerHeight - floatingMenu.offsetHeight;
+
+        newLeft = Math.max(
+            0,
+            Math.min(newLeft, maxLeft)
+        );
+
+        newTop = Math.max(
+            0,
+            Math.min(newTop, maxTop)
+        );
+
+        floatingMenu.style.left = newLeft + 'px';
+        floatingMenu.style.top = newTop + 'px';
+
+        floatingMenu.style.right = 'auto';
+        floatingMenu.style.bottom = 'auto';
+    }
+
+});
+
+
+/* ==========================
+   SELESAI DRAG
+========================== */
+
+floatingButton.addEventListener('pointerup', function(e) {
+
+    floatingButton.releasePointerCapture(e.pointerId);
+
+    setTimeout(() => {
+        isDragging = false;
+    }, 50);
+
+});
+
+</script>
     <!-- FOOTER -->
     <footer class="printex-footer">
         @include('layouts.footer')
