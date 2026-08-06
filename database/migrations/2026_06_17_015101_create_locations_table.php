@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kota');
             $table->longText('alamat');
+            $table->string('ling');
             $table->timestamps();
         });
     }

@@ -8,125 +8,140 @@ use Illuminate\Support\Facades\File;
 
 class SomeProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $some = SomeProduct::orderBy('urutan')->get();
+        $someProducts = SomeProduct::orderBy('urutan', 'asc')->get();
 
-        return view('someproduk.index', compact('some'));
+        return view('someproduk.index', compact('someProducts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('someproduk.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $request->validate([
-            'judul'   => 'required',
-            'isi'     => 'required',
-            'urutan'  => 'required|integer',
-            'gambar'  => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
+            'judul'  => 'required',
+            'isi'    => 'required',
+            'urutan' => 'required|integer',
+            'gambar' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
         ]);
 
-        $namafile = null;
 
-        if ($request->hasFile('gambar')) {
-            $file = $request->file('gambar');
-            $namafile = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/some'), $namafile);
-        }
+        
+        $file = $request->file('gambar');
+        $namaGambar = time().'_'.$file->getClientOriginalName();
+
+        $file->move(
+            public_path('uploads/some'),
+            $namaGambar
+        );
+
 
         SomeProduct::create([
-            'judul'   => $request->judul,
-            'isi'     => $request->isi,
-            'urutan'  => $request->urutan,
-            'gambar'  => $namafile,
+            'judul'  => $request->judul,
+            'isi'    => $request->isi,
+            'urutan' => $request->urutan,
+            'gambar' => $namaGambar,
         ]);
 
-        return redirect()->route('someproduct.index')
-            ->with('success', 'Data berhasil ditambahkan.');
+
+        return redirect()
+            ->route('someproduct.index')
+            ->with('success','Data berhasil disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(SomeProduct $someProduct)
     {
-        //
+        return view('someproduk.show', compact('someProduct'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(SomeProduct $someProduct)
     {
         return view('someproduk.edit', compact('someProduct'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, SomeProduct $someProduct)
     {
         $request->validate([
-            'judul'   => 'required',
-            'isi'     => 'required',
-            'urutan'  => 'required|integer',
-            'gambar'  => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2048',
+            'judul'  => 'required',
+            'isi'    => 'required',
+            'urutan' => 'required|integer',
+            'gambar' => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2048',
         ]);
 
+
         $data = [
-            'judul'   => $request->judul,
-            'isi'     => $request->isi,
-            'urutan'  => $request->urutan,
+            'judul'  => $request->judul,
+            'isi'    => $request->isi,
+            'urutan' => $request->urutan,
         ];
 
+
+        
         if ($request->hasFile('gambar')) {
 
-            // Hapus gambar lama
-            $path = public_path('uploads/some/' . $someProduct->gambar);
 
-            if (File::exists($path)) {
-                File::delete($path);
+            
+            $gambarLama = public_path(
+                'uploads/some/'.$someProduct->gambar
+            );
+
+
+            if (File::exists($gambarLama)) {
+                File::delete($gambarLama);
             }
 
-            $file = $request->file('gambar');
-            $namafile = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/some'), $namafile);
 
-            $data['gambar'] = $namafile;
+            $file = $request->file('gambar');
+
+            $namaGambar = time().'_'.$file->getClientOriginalName();
+
+            $file->move(
+                public_path('uploads/some'),
+                $namaGambar
+            );
+
+
+            $data['gambar'] = $namaGambar;
         }
+
 
         $someProduct->update($data);
 
-        return redirect()->route('someproduct.index')
-            ->with('success', 'Data berhasil diupdate.');
+
+        return redirect()
+            ->route('someproduct.index')
+            ->with('success','Data berhasil diupdate');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(SomeProduct $someProduct)
     {
-        $path = public_path('uploads/some/' . $someProduct->gambar);
 
-        if (File::exists($path)) {
-            File::delete($path);
+   
+        $gambar = public_path(
+            'uploads/some/'.$someProduct->gambar
+        );
+
+
+        if(File::exists($gambar)){
+            File::delete($gambar);
         }
+
 
         $someProduct->delete();
 
-        return redirect()->route('someproduct.index')
-            ->with('success', 'Data berhasil dihapus.');
+
+        return redirect()
+            ->route('someproduct.index')
+            ->with('success','Data berhasil dihapus');
     }
 }

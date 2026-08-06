@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SomeProduct extends Model
 {
-   protected $fillable = [
-    'judul',
-    'isi',
-    'urutan',
-    'gambar',
-   ];
+    protected $fillable = [
+        'judul',
+        'isi',
+        'urutan',
+        'gambar',
+    ];
 }

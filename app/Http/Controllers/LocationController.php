@@ -39,12 +39,14 @@ class LocationController extends Controller
     {
         $request->validate([
             'nama_kota' =>'required',
-            'alamat' =>'required'
+            'alamat' =>'required',
+            'ling' => 'nullable',
         ]);
 
         Location::create([
             'nama_kota' => $request->nama_kota,
             'alamat' => $request->alamat,
+            'ling' => $request->ling,
         ]);
 
         return redirect()->route('location.index')
@@ -74,12 +76,14 @@ class LocationController extends Controller
 {
     $request->validate([
         'nama_kota' => 'required',
-        'alamat' => 'required'
+        'alamat' => 'required',
+        'ling' => 'nullable',
     ]);
 
     $location->update([
         'nama_kota' => $request->nama_kota,
         'alamat' => $request->alamat,
+        'ling' => $request->link,
     ]);
 
     return redirect()->route('location.index')

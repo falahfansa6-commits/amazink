@@ -31,7 +31,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebsiteKontakController;
 use App\Http\Controllers\SomeProductController;
 
-Route::resource('someproduct',SomeProductController::class);
+Route::resource('someproduct', SomeProductController::class);
+
 
 Route::get('/kontak', [WebsiteKontakController::class, 'index']);
 

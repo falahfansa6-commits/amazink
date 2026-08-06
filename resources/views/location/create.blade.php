@@ -79,11 +79,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="ling">LINK lokasi</label>
+                    <input 
+                        type="text" 
+                        id="ling"
+                        name="ling" 
+                        value="{{ old('ling') }}"
+                        placeholder="Masukkan Link Maps">
+                </div>
+
+                <div class="form-group">
                     <label for="alamat">Alamat Lengkap</label>
                     <textarea id="editor" name="alamat" rows="5">
         {{ old('alamat', $locations->alamat ?? '') }}
     </textarea>
                 </div>
+
+                  
 
                 <!-- Bagian Tombol Aksi Bawah -->
                 <div class="btn-group" style="display: flex; justify-content: space-between; gap: 15px; margin-top: 35px; border-top: 1px solid #e2e8f0; padding-top: 20px;">

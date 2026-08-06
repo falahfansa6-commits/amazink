@@ -406,7 +406,14 @@ body {
     font-size: 0.95rem;
     line-height: 1.5;
     color: #222222;
+
+    max-width: 20ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
+
 
 /* printing solution */
 .pts-section-container {
@@ -459,6 +466,7 @@ body {
     text-decoration: underline;
     font-weight: 700;
 }
+
 
 /* FOOTER */
 * {
@@ -1281,4 +1289,26 @@ html {
     .hk-btn-submit {
         padding: 12px;
     }
+}
+
+/* djcd*/
+.lk-location-link{
+    color: #e11d24;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.lk-location-link:visited{
+    color: #e11d24;
+}
+
+.lk-location-link:hover{
+    color: #e11d24;
+    text-decoration: none;
+}
+
+.lk-location-link:active{
+    color: #e11d24;
 }

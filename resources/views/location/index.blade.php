@@ -28,14 +28,14 @@
                 </a>
             </div>
 
-            <!-- Pesan Sukses Alert (Opsional jika ada session flash data) -->
+            
             @if(session('success'))
                 <div class="alert-success">
                     <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
                 </div>
             @endif  
 
-            <!-- Utilities: Search & Bulk Actions (Menjaga konsistensi layout) -->
+         
             <div class="utilities-bar">
                 <div class="search-box">
                     <form action="{{ route('location.index') }}" method="GET">
@@ -58,6 +58,7 @@
                             <th width="80">No</th>
                             <th>Nama Kota</th>
                             <th>Alamat</th>
+                            <th>LINK MAPS</th>
                             <th width="220">Aksi</th>
                         </tr>
                     </thead>
@@ -74,7 +75,12 @@
                               
                             {!! $location->alamat !!}
 
-                            </>
+                            </td>
+                            <td class="link-row">
+                                <a href="{{ $location->ling }}" target="_blank">
+                                    <i class="fa-solid fa-link"></i> Link Tautan
+                                </a>
+                            </td>
                             <td>
                                 <div class="aksi">
                                     <a href="{{ route('location.edit', $location->id) }}" class="btn btn-edit">

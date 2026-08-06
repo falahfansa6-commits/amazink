@@ -30,7 +30,7 @@
         </thead>
 
         <tbody>
-            @forelse($some as $item)
+            @forelse($someProducts as $item)
 
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -48,12 +48,12 @@
 
                 <td>
 
-                    <a href="{{ route('someproduct.edit',$item->id) }}"
+                    <a href="{{ route('someproduct.edit', ['someproduct' => $item->id]) }}"
                         class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
-                    <form action="{{ route('someproduct.destroy',$item->id) }}"
+                    <form action="{{ route('someproduct.destroy', ['someproduct' => $item->id]) }}"
                         method="POST"
                         style="display:inline-block">
 
