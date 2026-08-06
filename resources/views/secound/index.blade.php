@@ -68,7 +68,7 @@
                             <td style="font-weight: 600; color: #1e293b;">{{ $item->judul }}</td>
                             
                             <!-- Kolom Deskripsi (dibatasi 100 karakter agar rapi) -->
-                            <td style="color: #64748b;">
+                            <td style="color: #64748b;" class="pts-right-description">
                             
                            {!! $item->isi !!}
 

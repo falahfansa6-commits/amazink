@@ -1,7 +1,4 @@
-/* ========================= */
-/* STYLE NAVBAR */
-/* ========================= */
-/* --- 1. PENGATURAN WARNA & FONT --- */
+
 :root {
     --warna-tombol: #FF4500;
     --warna-teks-tombol: #ffffff;
@@ -24,9 +21,17 @@ body {
     background-color: #ffffff;
     padding: 1px 24px;
     border-bottom: 1px solid var(--warna-garis);
-    height: 80px;          /* tinggi navbar tetap */
+    height: 80px;
     overflow: visible;
+
+    /* AGAR NAVBAR SELALU MENGIKUTI SAAT SCROLL */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }
+
 
 /* --- BAGIAN LOGO GAMBAR --- */
 .logo-container {
@@ -112,6 +117,7 @@ body {
 .slider-container {
     position: relative;
     width: 100%;
+    margin-top: 80px;
     max-height: 550px;
     overflow: hidden;
     background-color: #111111;
@@ -452,14 +458,22 @@ body {
 
 .pts-right-description {
     flex: 1.5;
+    max-width: 60ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .pts-small-text {
-    font-size: 1.1rem;
+    max-width: 60ch;
+    line-height: 1.6;
+    text-align: justify;
+     font-size: 1.1rem;
     line-height: 1.6;
     color: #000000;
-    text-align: justify;
+    
 }
+
 
 .pts-highlight-link {
     color: #e11d24;
@@ -1291,6 +1305,7 @@ html {
     }
 }
 
+
 /* djcd*/
 .lk-location-link{
     color: #e11d24;
@@ -1311,4 +1326,105 @@ html {
 
 .lk-location-link:active{
     color: #e11d24;
+}
+/* ==============================
+   FLOATING SOCIAL MENU
+================================ */
+
+.floating-menu {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    z-index: 99999;
+
+    touch-action: none;
+}
+
+/* TOMBOL UTAMA */
+.floating-button {
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #e11d24;
+    color: white;
+
+    font-size: 24px;
+
+    cursor: grab;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+
+    position: relative;
+    z-index: 3;
+}
+
+.floating-button:active {
+    cursor: grabbing;
+}
+
+/* TOMBOL WHATSAPP & INSTAGRAM */
+.floating-item {
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: scale(0);
+
+    transition: all .3s ease;
+}
+
+/* WhatsApp */
+.floating-item.whatsapp {
+    background: #25D366;
+
+    right: 5px;
+    bottom: 70px;
+}
+
+/* Instagram */
+.floating-item.instagram {
+    background: #E1306C;
+
+    right: 5px;
+    bottom: 130px;
+}
+
+/* KETIKA DIBUKA */
+.floating-menu.active .floating-item {
+    opacity: 1;
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+/* Hover */
+.floating-item:hover {
+    transform: scale(1.1) !important;
+
 }

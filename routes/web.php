@@ -104,12 +104,12 @@ Route::middleware('admin.auth')->prefix('admin')->group(function () {
            ->name('admin.hubkontak');
 
     Route::resource('slider', SliderController::class);
-
+   
 Route::resource('location', LocationController::class);
 Route::resource('tentang', TentangController::class);
 Route::resource('ourvalues', OurValueController::class);
 Route::resource('ourvalueimage', OurValueImageController::class);
-Route::resource('produk1', Produk1Controller::class);
+Route::resource('produk1', Produk1Controller::class)->except('show');
 Route::resource('produk2', Produk2Controller::class);
 Route::resource('produk3', Produk3Controller::class);
 Route::resource('secound', SecoundController::class);

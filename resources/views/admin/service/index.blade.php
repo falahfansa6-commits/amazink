@@ -59,7 +59,7 @@
                             </td>
 
                             <!-- Kolom Deskripsi -->
-                            <td style="color: #64748b;">
+                            <td style="color: #64748b;" class="pts-right-description">
                              {!! $service->isi !!}
                             </td>
 

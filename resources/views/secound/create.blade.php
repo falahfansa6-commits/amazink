@@ -83,7 +83,7 @@
                 <!-- Input Deskripsi / Isi -->
                 <div class="form-group" style="margin-top: 15px;">
                     <label for="isi">Deskripsi <span style="color: #ef4444;">*</span></label>
-                  <textarea id="editor" name="isi">
+                  <textarea id="editor" name="isi" class="note-editor">
         {{ old('isi', $tentang->isi ?? '') }}
     </textarea>
                     @error('isi')

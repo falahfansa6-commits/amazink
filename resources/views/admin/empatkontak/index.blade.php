@@ -48,10 +48,10 @@
                                 {{ $kontak->judul }}
                             </td>
 
-                            <td class="text-muted-row">
+                            <td  class="pts-right-description">
                                 {!! $kontak->isi !!}
                             </td>
-
+                              
                             <td class="text-muted-row">  
                                 {{ $kontak->text_link }}
                             </td>

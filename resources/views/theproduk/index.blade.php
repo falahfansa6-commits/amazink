@@ -57,8 +57,8 @@
                             </td>
 
                             <!-- Kolom Isi/Deskripsi -->
-                            <td class="text-muted-row">
-                                {!! $item->isi !!}
+                            <td class="pts-right-description">
+                               {{ $item->isi }}
                                 
                             </td>
 
