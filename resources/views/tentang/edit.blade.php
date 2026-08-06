@@ -110,7 +110,7 @@
                         accept="image/*"
                         style="padding: 8px 12px;">
                     <small class="text-muted" style="color: #64748b; font-size: 13px; display: block; margin-top: 6px;">
-                        <i class="fa-solid fa-circle-info"></i> Kosongkan jika tidak ingin mengganti gambar.
+                        <i class="fa-solid fa-circle-info"></i> Kosongkan jika tidak ingin mengganti gambar, Format yang di dukung: jpg,jpeg,png,webp MAX 2MB.
                     </small>
                 </div>
 

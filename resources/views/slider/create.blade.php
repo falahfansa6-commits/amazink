@@ -51,6 +51,23 @@
                         required>
                 </div>
 
+                  <!-- Preview Gambar Saat Ini / Gambar Baru -->
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>Gambar</label>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span style="display: block; font-size: 12px; color: #64748b; margin-bottom: 6px;">Pratinjau gambar:</span>
+                        <div style="width: 150px; height: 150px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; background-color: #f8fafc; padding: 4px;">
+                           <img id="imgPreview"
+     src=""
+     alt="Preview Gambar"
+     style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: none;">
+
+<i id="placeholderIcon"
+   class="fa-regular fa-image"
+   style="font-size: 32px; color: #cbd5e1;"></i>
+                        </div>
+                    </div>
                 <div class="form-group">
                     <label for="gambar">Upload Gambar Slider</label>
                     <input
@@ -60,8 +77,11 @@
                         accept="image/*"
                         required
                         style="padding: 8px 12px;">
+                        <small style="color: #64748b; display: block; margin-top: 4px; font-size: 12px;">
+                        Format yang didukung: JPG, JPEG, PNG, atau WEBP. MAX 2MB.  
+                    </small>
                 </div>
-
+                  
                 <div class="form-group">
                     <label for="posisi">Posisi Tampilan</label>
                     <select id="posisi" name="posisi">
@@ -115,7 +135,26 @@
         </div>
     </footer>
 </div>
+<script>
+document.getElementById('gambar').addEventListener('change', function (e) {
+    const file = e.target.files[0];
 
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const img = document.getElementById('imgPreview');
+            const icon = document.getElementById('placeholderIcon');
+
+            img.src = event.target.result;
+            img.style.display = 'block';
+            icon.style.display = 'none';
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+</script>
 </body>
 </html>
 @endsection

@@ -118,7 +118,7 @@
                         class="@error('gambar') is-invalid @enderror"
                         onchange="previewImage(this)">
                     <small style="color: #64748b; display: block; margin-top: 4px; font-size: 12px;">
-                        *Biarkan kosong jika tidak ingin mengganti gambar. Format: JPG, JPEG, PNG.
+                        *Biarkan kosong jika tidak ingin mengganti gambar. Format: JPG, JPEG, PNG. MAX 4MB.
                     </small>
                     
                     @error('gambar')
@@ -165,6 +165,12 @@
             }
             
             reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "";
+            preview.style.display = 'none';
+            if(placeholder) {
+                placeholder.style.display = 'block';
+            }
         }
     }
 </script>

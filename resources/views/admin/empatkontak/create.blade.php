@@ -56,7 +56,7 @@
             <form action="{{ route('empat-kontak.store') }}" method="POST">
                 @csrf
 
-                <!-- Judul -->
+                
                 <div class="form-group">
                     <label>Judul</label>
                     <input
@@ -67,7 +67,7 @@
                         required>
                 </div>
 
-                <!-- Isi -->
+                
                 <div class="form-group">
                     <label>Isi</label>
                    <textarea id="editor" name="isi">
@@ -75,7 +75,7 @@
     </textarea>
                 </div>
 
-                <!-- Teks Link -->
+              
                 <div class="form-group">
                     <label>Teks Link</label>
                     <input
@@ -86,7 +86,7 @@
                         required>
                 </div>
 
-                <!-- Link -->
+               
                 <div class="form-group">
                     <label>Link</label>
                     <input
@@ -97,7 +97,7 @@
                         required>
                 </div>
 
-                <!-- Urutan -->
+              
                 <div class="form-group">
                     <label>Urutan</label>
                     <input

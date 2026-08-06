@@ -114,7 +114,7 @@
                         onchange="previewImage(this)"
                         required>
                     <small style="color: #64748b; display: block; margin-top: 4px; font-size: 12px;">
-                        Format yang didukung: JPG, JPEG, PNG, atau WEBP.
+                        Format yang didukung: JPG, JPEG, PNG, atau WEBP. MAX 4MB.  
                     </small>
                     
                     @error('gambar')

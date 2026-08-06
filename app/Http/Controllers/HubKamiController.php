@@ -31,8 +31,8 @@ class HubKamiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'  => 'required|min:7',
-            'no_wa' => 'required',
+            'nama'  => 'required|min:3',
+            'no_wa' => 'required|digits_between:10,13',
             'isi'   => 'required',
             'email' => [
                 'required',
@@ -76,8 +76,8 @@ class HubKamiController extends Controller
     public function update(Request $request, Hub_kami $hub_kami)
     {
         $request->validate([
-            'nama'  => 'required|min:7',
-            'no_wa' => 'required',
+            'nama'  => 'required|min:3',
+            'no_wa' => 'required|digits_between:10,13',
             'isi'   => 'required',
             'email' => [
                 'required',

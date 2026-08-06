@@ -19,7 +19,7 @@
                 <h1>Edit Kontak</h1>
             </div>
 
-            {{-- Menampilkan Error --}}
+            
             @if ($errors->any())
                 <div class="alert-danger">
                     <ul style="margin:0; padding-left:20px;">
@@ -35,7 +35,7 @@
                 @csrf
                 @method('PUT')
 
-                {{-- Judul --}}
+                
                 <div class="form-group">
                     <label for="judul">Judul</label>
 
@@ -48,7 +48,7 @@
                         required>
                 </div>
 
-                {{-- Isi --}}
+               
                 <div class="form-group">
                     <label for="editor">Isi</label>
 
@@ -59,7 +59,7 @@
                         required>{{ old('isi', $empatKontak->isi) }}</textarea>
                 </div>
 
-                {{-- Text Link --}}
+                
                 <div class="form-group">
                     <label for="text_link">Teks Link</label>
 
@@ -72,7 +72,7 @@
                         required>
                 </div>
 
-                {{-- Link --}}
+                
                 <div class="form-group">
                     <label for="link">Link</label>
 
@@ -85,7 +85,7 @@
                         required>
                 </div>
 
-                {{-- Urutan --}}
+               
                 <div class="form-group">
                     <label for="urutan">Urutan</label>
 
@@ -98,7 +98,7 @@
                         required>
                 </div>
 
-                {{-- Tombol --}}
+             
                 <div class="aksi" style="justify-content:flex-start; margin-top:25px; gap:10px;">
 
                     <button

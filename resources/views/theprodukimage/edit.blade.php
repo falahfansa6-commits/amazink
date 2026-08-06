@@ -55,7 +55,7 @@
                         id="gambar" 
                         name="gambar"
                         class="@error('gambar') is-invalid @enderror">
-                    <small class="text-muted-row" style="margin-top: 4px; display: block;">Format yang didukung: JPG, JPEG, PNG, atau WEBP.</small>
+                    <small class="text-muted-row" style="margin-top: 4px; display: block;">Format yang didukung: JPG, JPEG, PNG, atau WEBP MAX 2MB.</small>
                     @error('gambar')
                         <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
                             <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
