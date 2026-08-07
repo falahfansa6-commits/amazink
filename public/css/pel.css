@@ -182,10 +182,18 @@ body {
     color: #ffffff;
 }
 
+
+
+
 .printex-section .printex-card p {
     font-size: 14px;
     line-height: 1.7;
     color: #ffffff;
+
+    max-width: 45ch;   /* sekitar 45 karakter per baris */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .empty-text {
@@ -262,6 +270,7 @@ body {
 }
 
 /* Kartu Box Kategori Produk */
+/* Kartu Box Kategori Produk */
 #theproduk .ks-product-card {
     background-color: rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.22);
@@ -269,11 +278,17 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
     transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    width: 100%;
+    max-width: 100%;
 }
 
-#theproduk .ks-product-card:hover {
-    background-color: rgba(0, 0, 0, 0.22);
-    border-color: rgba(255, 255, 255, 0.45);
+#theproduk .ks-product-card h3,
+#theproduk .ks-product-card p {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 
 #theproduk .ks-product-card h3 {

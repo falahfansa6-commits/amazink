@@ -19,30 +19,25 @@
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
     <nav>
         @include('layouts.navbar')
     </nav>
 
 
-    <!-- =========================
-         SLIDER
-    ========================== -->
+   
     <section class="slider-container">
 
-        <!-- Tombol Previous -->
+        
         <button
             type="button"
             class="prev"
             onclick="prevSlide()"
         >
-            ❮
+            
         </button>
 
 
-        <!-- Slider yang digeser -->
+        
         <div class="slider" id="slider">
 
             @forelse($sliderBeranda as $slider)
@@ -67,22 +62,20 @@
         </div>
 
 
-        <!-- Tombol Next -->
+        
         <button
             type="button"
             class="next"
             onclick="nextSlide()"
         >
-            ❯
+            
         </button>
 
     </section>
 
 
 
-    <!-- =========================
-         TENTANG KAMI
-    ========================== -->
+  
     @if(empty($keyword))
 
         <section class="container">
@@ -113,7 +106,7 @@
             </div>
 
 
-            <!-- Bagian Gambar -->
+           
             <div class="gambar">
 
                 <img
@@ -129,9 +122,7 @@
 
 
 
-    <!-- =========================
-         HASIL SABLON / SECOUNDS
-    ========================== -->
+   
     @if($secounds)
 
         <section
@@ -250,7 +241,7 @@
 
 
                         <!-- Isi -->
-                        <p class="ov-card-text">
+                        <p class="pts-right-description12">
                             {!! $item->isi !!}
                         </p>
 
