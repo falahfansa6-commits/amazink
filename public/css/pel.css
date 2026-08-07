@@ -154,9 +154,21 @@ body {
 .printex-section .printex-services {
     background: #d80c18;
     padding: 60px 80px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;                /* Mengubah dari grid menjadi flex agar berjajar ke samping */
+    flex-wrap: nowrap;            /* Mencegah card turun ke baris bawah */
     gap: 30px;
+    overflow-x: auto;             /* Memunculkan fungsi slider/geser horizontal */
+    scroll-snap-type: x mandatory; /* Memberikan efek snap yang rapi saat digeser */
+    scrollbar-width: thin;        /* Memperhalus scrollbar di Firefox */
+}
+
+/* Mempercantik scrollbar untuk browser Chrome/Edge/Safari */
+.printex-section .printex-services::-webkit-scrollbar {
+    height: 8px;
+}
+.printex-section .printex-services::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
 }
 
 .printex-section .printex-card {
@@ -166,6 +178,16 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    
+    /* Mengunci ukuran card agar konsisten dan pas dengan batas karakter */
+    flex: 0 0 calc(33.333% - 20px); 
+    min-width: 320px;
+    max-width: calc(45ch + 50px); 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    scroll-snap-align: start;
 }
 
 .printex-section .printex-card:hover {
@@ -182,15 +204,12 @@ body {
     color: #ffffff;
 }
 
-
-
-
 .printex-section .printex-card p {
     font-size: 14px;
     line-height: 1.7;
     color: #ffffff;
 
-    max-width: 45ch;   /* sekitar 45 karakter per baris */
+    max-width: 45ch;   /* Sekitar 45 karakter per baris */
     white-space: normal;
     overflow-wrap: break-word;
     word-break: break-word;

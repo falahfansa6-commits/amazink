@@ -41,7 +41,7 @@
                         id="gambar"
                         name="gambar" 
                         required>
-                    <small class="text-muted-row" style="margin-top: 4px; display: block;">Format yang didukung: JPG, JPEG, PNG, atau WEBP.</small>
+                    <small class="text-muted-row" style="margin-top: 4px; display: block;">Format yang didukung: JPG, JPEG, PNG, atau WEBP. MAX 2MB.</small>
                 </div>
 
                 <!-- Kelompok Tombol Aksi menggunakan wrapper .aksi bawaan CSS -->

@@ -6,8 +6,6 @@ use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Theproduk;
 use App\Models\Produk1;
-use App\Models\Produk2;
-use App\Models\Produk3;
 use App\Models\Theprodukimage;
 
 class PelayananController extends Controller
@@ -24,8 +22,7 @@ class PelayananController extends Controller
         $theproduk = Theproduk::orderBy('urutan', 'asc')->get();
 
         $produk1 = Produk1::latest()->get();
-        $produk2 = Produk2::latest()->get();
-        $produk3 = Produk3::latest()->get();
+    
         $theprodukimage = Theprodukimage::latest()->first();
 
         return view('pelayanan', compact(
@@ -33,8 +30,6 @@ class PelayananController extends Controller
             'services',
             'theproduk',
             'produk1',
-            'produk2',
-            'produk3',
             'theprodukimage'
         ));
     }

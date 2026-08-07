@@ -9,29 +9,69 @@
 <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
-    <!-- jQuery (diperlukan untuk Summernote) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Summernote JS -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<!-- jQuery (diperlukan untuk Summernote) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Summernote JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-    $('#editor').summernote({
-        placeholder: 'Masukkan konten...',
-        tabsize: 2,
-        height: 300,
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
+<script>
+    $(document).ready(function() {
+        const maxChars = 250;
+
+        $('#editor').summernote({
+            placeholder: 'Masukkan konten...',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            // Callback untuk membatasi jumlah karakter di Summernote
+            callbacks: {
+                onKeydown: function(e) {
+                    var t = editor.code();
+                    // Hilangkan tag HTML untuk menghitung teks murni
+                    var plainText = $('<div>').html(t).text();
+                    
+                    // Tombol yang diizinkan untuk ditekan meskipun sudah limit (seperti Backspace, Delete, Panah)
+                    var allowedKeys = [8, 46, 37, 38, 39, 40];
+                    
+                    if (plainText.length >= maxChars && !allowedKeys.includes(e.keyCode)) {
+                        // Batasi jika bukan tombol kontrol
+                        if (e.keyCode !== 8 && e.keyCode !== 46) {
+                            e.preventDefault();
+                        }
+                    }
+                },
+                onPaste: function(e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    var currentText = $('<div>').html($('#editor').summernote('code')).text();
+                    
+                    if (currentText.length + bufferText.length > maxChars) {
+                        e.preventDefault();
+                        alert('Teks melebihi batas maksimal ' + maxChars + ' karakter!');
+                    }
+                },
+                onChange: function(contents) {
+                    var plainText = $('<div>').html(contents).text();
+                    if (plainText.length > maxChars) {
+                        // Potong string jika melebihi batas
+                        var trimmed = plainText.substring(0, maxChars);
+                        $('#editor').summernote('code', trimmed);
+                        plainText = trimmed;
+                    }
+                    // Update counter secara real-time
+                    $('#deskCount').text(plainText.length + ' / 250 karakter');
+                }
+            }
+        });
     });
-});
 </script>
 
 <div class="main-wrapper">
@@ -70,12 +110,12 @@
                         type="text" 
                         id="judul" 
                         name="judul" 
-                        maxlength="30"
+                        maxlength="35"
                         value="{{ old('judul') }}" 
                         placeholder="Masukkan judul layanan"
                         class="@error('judul') is-invalid @enderror"
                         required>
-                    <small id="judulCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;">0 / 30 karakter</small>
+                    <small id="judulCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;">0 / 35 karakter</small>
                     @error('judul')
                         <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
                             <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
@@ -86,16 +126,8 @@
                 <!-- Input Deskripsi -->
                 <div class="form-group" style="margin-top: 15px;">
                     <label for="isi">Deskripsi <span style="color: #ef4444;">*</span></label>
-                   <textarea id="editor" name="isi"
-                   
-                    rows="6" 
-                        maxlength="250"
-                        placeholder="Masukkan deskripsi layanan"
-                        class="@error('isi') is-invalid @enderror"
-                        required>
-        {{ old('isi', $service->isi ?? '') }}
-    </textarea> 
-                      
+                    <textarea id="editor" name="isi" class="@error('isi') is-invalid @enderror" required>{{ old('isi') }}</textarea> 
+                         
                     <small id="deskCount" class="text-muted" style="display: block; margin-top: 4px; text-align: right; color: #64748b; font-size: 12px;">0 / 250 karakter</small>
                     @error('isi')
                         <small style="color: #ef4444; font-size: 12px; margin-top: 4px; display: block;">
@@ -122,7 +154,7 @@
                     @enderror
                 </div>
 
-                <!-- Kelompok Tombol Aksi menggunakan wrapper .aksi bawaan slider.css -->
+                <!-- Kelompok Tombol Aksi -->
                 <div class="aksi" style="justify-content: flex-start; margin-top: 25px; gap: 10px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
                     <button type="submit" class="btn btn-add" style="background: #10b981;">
                         <i class="fa-solid fa-floppy-disk"></i> Simpan
@@ -138,23 +170,17 @@
     </div>
 </div>
 
-<!-- Script Counter Karakter Real-time -->
+<!-- Script Counter Karakter Real-time untuk Judul -->
 <script>
     const judul = document.getElementById('judul');
-    const isi = document.getElementById('isi');
     const judulCount = document.getElementById('judulCount');
-    const deskCount = document.getElementById('deskCount');
 
-    function updateCounter() {
+    function updateJudulCounter() {
         judulCount.textContent = judul.value.length + " / 35 karakter";
-        deskCount.textContent = isi.value.length + " / 250 karakter";
     }
 
-    judul.addEventListener('input', updateCounter);
-    isi.addEventListener('input', updateCounter);
-
-    // Jalankan counter saat halaman pertama kali dimuat
-    document.addEventListener('DOMContentLoaded', updateCounter);
-</script>
+    judul.addEventListener('input', updateJudulCounter);
+    document.addEventListener('DOMContentLoaded', updateJudulCounter);
+</>
 
 @endsection
