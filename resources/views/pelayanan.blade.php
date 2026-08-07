@@ -39,16 +39,63 @@
             </div>
         </div>
 
-        <div class="printex-services">
-            @forelse($services as $service)
-                <div class="printex-card">
-                    <h3>{{ $service->judul }}</h3>
-                    <p>{!! $service->isi !!}</p>
+        <div class="ov-right-side">
+
+    <div class="ov-slider">
+
+        <div class="ov-slider-track" id="ovSliderTrack">
+
+            @forelse ($services as $service)
+
+            <div class="ov-card">
+
+                <h3 class="ov-card-title">
+                    {{ $service->judul }}
+                </h3>
+
+                <div class="ov-divider"></div>
+
+                <div class="ov-card-text">
+                    {!! $service->isi !!}
                 </div>
+
+            </div>
+
             @empty
-                <p class="empty-text">Belum ada layanan.</p>
+
+            <div class="ov-card">
+                Belum ada layanan
+            </div>
+
             @endforelse
+
         </div>
+
+    </div>
+
+</div>
+    <!-- PANAH DI BAWAH -->
+    <div class="ov-navigation">
+
+        <button
+            type="button"
+            class="ov-slider-btn"
+            id="ovPrev">
+            &#10094;
+        </button>
+
+        <button
+            type="button"
+            class="ov-slider-btn"
+            id="ovNext">
+            &#10095;
+        </button>
+
+    </div>
+
+</div>
+
+</div>
     </section>
 
     <!-- GRID PRODUCTS ("THE PRODUCTS") -->
@@ -86,7 +133,7 @@
         </div>
     </div> 
 
-    @foreach($produk as $item)
+    @foreach($produk1    as $item)
 
 <section id="produk{{ $item->urutan }}" class="item-section">
 
@@ -142,7 +189,7 @@
 
 
       <div class="floating-menu" id="floatingMenu">
-    <a href="https://wa.me/0821-3333-9489"
+    <a href="https://wa.me/082133339489"
     class="floating-item whatsapp" target="_blank">
     <i class="fab fa-whatsapp"></i>
     </a>
@@ -264,44 +311,104 @@ floatingButton.addEventListener('pointerup', function(e) {
     }, 50);
 
 });
-
 </script>
+
     <!-- FOOTER -->
     <footer class="printex-footer">
         @include('layouts.footer')
     </footer>
 
     <!-- JAVASCRIPT SLIDER -->
-    <script>
-        let slider = document.getElementById('slider');
-        let slides = document.querySelectorAll('.slide');
-        let index = 0;
+   <script>
 
-        function nextSlide() {
-            if(slides.length <= 1) return;
-            index++;
-            if(index >= slides.length) {
-                index = 0;
-            }
-            updateSliderPosition();
-        }
+const slider = document.querySelector(".ov-slider");
+const track = document.querySelector(".ov-slider-track");
+const cards = document.querySelectorAll(".ov-card");
 
-        function prevSlide() {
-            if(slides.length <= 1) return;
-            index--;
-            if(index < 0) {
-                index = slides.length - 1;
-            }
-            updateSliderPosition();
-        }
+const nextBtn = document.getElementById("ovNext");
+const prevBtn = document.getElementById("ovPrev");
 
-        function updateSliderPosition() {
-            slider.style.transform = `translateX(-${index * 100}%)`;
-        }
+let current = 0;
+const gap = 25;
+const visible = 3;
 
-        if(slides.length > 1) {
-            setInterval(nextSlide, 4000);
-        }
-    </script>
+function updateSlider(){
+
+    const cardWidth = cards[0].offsetWidth + gap;
+
+    const maxIndex = Math.max(cards.length - visible,0);
+
+    if(current < 0){
+        current = 0;
+    }
+
+    if(current > maxIndex){
+        current = maxIndex;
+    }
+
+    track.style.transform =
+        `translateX(-${current * cardWidth}px)`;
+
+}
+
+nextBtn.addEventListener("click",()=>{
+
+    const maxIndex = Math.max(cards.length - visible,0);
+
+    if(current < maxIndex){
+
+        current++;
+
+    }else{
+
+        current = 0;
+
+    }
+
+    updateSlider();
+
+});
+
+prevBtn.addEventListener("click",()=>{
+
+    const maxIndex = Math.max(cards.length - visible,0);
+
+    if(current > 0){
+
+        current--;
+
+    }else{
+
+        current = maxIndex;
+
+    }
+
+    updateSlider();
+
+});
+
+setInterval(()=>{
+
+    const maxIndex = Math.max(cards.length - visible,0);
+
+    if(current < maxIndex){
+
+        current++;
+
+    }else{
+
+        current = 0;
+
+    }
+
+    updateSlider();
+
+},2000);
+
+window.addEventListener("resize",updateSlider);
+
+updateSlider();
+
+</script>
 </body>
 </html>

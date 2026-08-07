@@ -8,10 +8,120 @@
     font-family: 'Poppins', Arial, sans-serif;
 }
 
+/* ========================= */
+/* STYLE NAVBAR */
+/* ========================= */
+/* --- 1. PENGATURAN WARNA & FONT --- */
+:root {
+    --warna-tombol: #FF4500;
+    --warna-teks-tombol: #ffffff;
+    --warna-teks-menu: #333333;
+    --warna-garis: #e0e0e0;
+    --font-utama: Arial, sans-serif;
+}
+
 body {
-    color: #222222;
+    margin: 0;
+    font-family: var(--font-utama);
+    background-color: #f9f9f9;
+}
+
+/* --- 2. STRUKTUR NAVBAR --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #ffffff;
-    overflow-x: hidden;
+    padding: 1px 24px;
+    border-bottom: 1px solid var(--warna-garis);
+    height: 80px;
+    overflow: visible;
+
+    /* AGAR NAVBAR SELALU MENGIKUTI SAAT SCROLL */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+/* --- BAGIAN LOGO GAMBAR --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logo-img {
+    height: 150px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+
+    /* memperbesar tanpa mengubah navbar */
+    transform: scale(1.3);
+    transform-origin: left center;
+}
+
+/* Kolom Pencarian */
+.search-container {
+    flex: 1;
+    max-width: 400px; 
+    margin: 0 20px;
+}
+
+.search-input {
+    width: 90%;
+    padding: 8px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 20px; 
+    font-size: 14px;
+    outline: none;
+}
+
+.search-error {
+    margin-top: 10px;
+    padding: 12px 16px;
+    color: #b91c1c;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Menu dan Tombol Kanan */
+.menu-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.menu-item {
+    text-decoration: none;
+    color: var(--warna-teks-menu);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    color: var(--warna-tombol); 
+}
+
+/* Tombol Utama */
+.btn-utama {
+    background-color: var(--warna-tombol);
+    color: var(--warna-teks-tombol);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-utama:hover {
+    opacity: 0.9;
 }
 
 /* 
@@ -483,4 +593,149 @@ body {
     .item-section .item-title {
         font-size: 26px;
     }
+}
+
+/* ==========================
+   SLIDER
+========================== */
+
+/* Container Slider */
+/* ==========================
+   SLIDER
+========================== */
+
+.ov-right-side{
+    width:100%;
+    padding:40px 20px;
+    box-sizing:border-box;
+    overflow:hidden;
+}
+
+.ov-slider{
+    width:100%;
+    overflow:hidden;
+}
+
+.ov-slider-track{
+    display:flex;
+    flex-wrap:nowrap;   /* WAJIB */
+    gap:25px;
+    transition:transform .6s ease;
+    justify-content:flex-start;
+}
+
+.ov-card{
+
+    flex:0 0 calc((100% - 50px)/3);
+
+    width:calc((100% - 50px)/3);
+
+    background:#c40011;
+
+    color:#fff;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    min-height:300px;
+
+    box-sizing:border-box;
+
+}
+
+.ov-card-title{
+
+    font-size:34px;
+
+    margin-bottom:18px;
+
+}
+
+.ov-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#ffffff55;
+
+    margin-bottom:20px;
+
+}
+
+.ov-card-text{
+
+    line-height:1.8;
+
+    word-break:break-word;
+
+}
+
+/* tombol */
+
+.ov-navigation{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+.ov-slider-btn{
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#930000;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:24px;
+
+}
+
+.ov-slider-btn:hover{
+
+    background:#b60000;
+
+}
+
+/* tablet */
+
+@media(max-width:992px){
+
+.ov-card{
+
+flex:0 0 calc((100% - 25px)/2);
+
+min-width:calc((100% - 25px)/2);
+
+}
+
+}
+
+/* hp */
+
+@media(max-width:768px){
+
+.ov-card{
+
+flex:0 0 100%;
+
+min-width:100%;
+
+}
+
 }
