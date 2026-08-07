@@ -29,8 +29,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\HubKontakController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebsiteKontakController;
+use App\Http\Controllers\ProductController;
 
-
+Route::resource('products', ProductController::class);
 
 
 

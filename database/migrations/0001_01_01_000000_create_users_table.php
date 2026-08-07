@@ -26,16 +26,6 @@ return new class extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
-
-        Schema::create('sessions', function (Blueprint $table) {
-         $table->id();
-$table->string('name');
-$table->string('username')->unique();
-$table->string('password');
-$table->string('role')->default('user');
-$table->rememberToken();
-$table->timestamps();
-        });
     }
 
     /**
@@ -43,8 +33,7 @@ $table->timestamps();
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('users');
     }
 };
