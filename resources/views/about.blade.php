@@ -30,8 +30,10 @@
 
                 <br>
 
-                <td>
-    {!! $tentang->isi !!}
+     <td>
+    <div class="text-limit">
+        {!! $tentang->isi !!}
+    </div>
 </td>
 
             </div>

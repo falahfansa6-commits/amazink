@@ -47,10 +47,12 @@ class ProductController extends Controller
             ->with('success', 'Data berhasil ditambahkan.');
     }
 
-    public function edit(Product $product)
-    {
-        return view('products.edit', compact('product'));
-    }
+   public function edit($id)
+{
+    $product = Product::findOrFail($id);
+
+    return view('products.edit', compact('product'));
+}
 
     public function update(Request $request, Product $product)
     {

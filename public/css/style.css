@@ -184,6 +184,14 @@ body {
     padding: 148px;
     background: #f5f5f5;
 }
+.text-limit {
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
 
 .text h1{
     color: red;

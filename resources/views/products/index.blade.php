@@ -5,7 +5,7 @@
 
     <h3 class="mb-4">Edit Product</h3>
 
-    <form action="{{ route('products.update',$product->id) }}"
+    <form action="{{ route('products.update',$products->id) }}"
           method="POST"
           enctype="multipart/form-data">
 
@@ -17,14 +17,14 @@
             <input type="text"
                    name="judul"
                    class="form-control"
-                   value="{{ old('judul',$product->judul) }}">
+                   value="{{ old('judul',$products->judul) }}">
         </div>
 
         <div class="mb-3">
             <label>Isi</label>
             <textarea name="isi"
                       rows="6"
-                      class="form-control">{{ old('isi',$product->isi) }}</textarea>
+                      class="form-control">{{ old('isi',$products->isi) }}</textarea>
         </div>
 
         <div class="mb-3">
@@ -32,13 +32,13 @@
             <input type="number"
                    name="urutan"
                    class="form-control"
-                   value="{{ old('urutan',$product->urutan) }}">
+                   value="{{ old('urutan',$products->urutan) }}">
         </div>
 
         <div class="mb-3">
 
-            @if($product->gambar)
-                <img src="{{ asset('storage/'.$product->gambar) }}"
+            @if($products->gambar)
+                <img src="{{ asset('storage/'.$products->gambar) }}"
                      width="150"
                      class="img-thumbnail mb-2">
             @endif
