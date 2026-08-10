@@ -67,10 +67,10 @@
                         </tr>
 
                           <tr>
-                            <td class="judul-text">Produk 1</td>
+                            <td class="judul-text">Product</td>
                             <td>
                                 <div class="aksi">
-                                    <a href="{{ route('produk1.index') }}" class="btn btn-edit">
+                                    <a href="{{ route('products.index') }}" class="btn btn-edit">
                                         <i class="fa-solid fa-pen"></i> Detail
                                     </a>
                                 </div>
@@ -79,27 +79,7 @@
 
 
 
-                          <tr>
-                            <td class="judul-text">Produk 2</td>
-                            <td>
-                                <div class="aksi">
-                                    <a href="{{ route('produk2.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Detail
-                                    </a>
-                                </div>
-                            </td>
-
-
-                              <tr>
-                            <td class="judul-text">Produk 3</td>
-                            <td>
-                                <div class="aksi">
-                                    <a href="{{ route('produk3.index') }}" class="btn btn-edit">
-                                        <i class="fa-solid fa-pen"></i> Detail
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                          
                         </tr>
                     </tbody>
                 </table>

@@ -1,83 +1,136 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3>Data Product</h3>
 
-        <a href="{{ route('products.create') }}" class="btn btn-primary">
-            Tambah Product
-        </a>
+<div class="container">
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Edit Product</h3>
+
+    <a href="{{ route('products.index') }}" class="btn btn-secondary">
+        Kembali
+    </a>
+</div>
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form
+    action="{{ route('products.update', $product->id) }}"
+    method="POST"
+    enctype="multipart/form-data"
+>
+
+    @csrf
+    @method('PUT')
+
+    {{-- Judul --}}
+    <div class="mb-3">
+        <label for="judul" class="form-label">
+            Judul
+        </label>
+
+        <input
+            type="text"
+            id="judul"
+            name="judul"
+            class="form-control"
+            value="{{ old('judul', $product->judul) }}"
+            required
+        >
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    {{-- Isi --}}
+    <div class="mb-3">
+        <label for="isi" class="form-label">
+            Isi
+        </label>
 
-    <table class="table table-bordered table-hover align-middle">
-        <thead class="table-dark">
-            <tr>
-                <th width="70">No</th>
-                <th width="80">Urutan</th>
-                <th width="120">Gambar</th>
-                <th>Judul</th>
-                <th>Isi</th>
-                <th width="150">Aksi</th>
-            </tr>
-        </thead>
+        <textarea
+            id="isi"
+            name="isi"
+            class="form-control"
+            rows="6"
+            required
+        >{{ old('isi', $product->isi) }}</textarea>
+    </div>
 
-        <tbody>
-            @forelse($products as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
+    {{-- Urutan --}}
+    <div class="mb-3">
+        <label for="urutan" class="form-label">
+            Urutan
+        </label>
 
-                    <td>{{ $item->urutan }}</td>
+        <input
+            type="number"
+            id="urutan"
+            name="urutan"
+            class="form-control"
+            value="{{ old('urutan', $product->urutan) }}"
+            required
+        >
+    </div>
 
-                    <td>
-                        @if($item->gambar)
-                            <img src="{{ asset('storage/'.$item->gambar) }}"
-                                 width="100"
-                                 class="img-thumbnail">
-                        @endif
-                    </td>
+    {{-- Gambar --}}
+    <div class="mb-3">
 
-                    <td>{{ $item->judul }}</td>
+        <label for="gambar" class="form-label">
+            Gambar
+        </label>
 
-                    <td>{{ Str::limit(strip_tags($item->isi),60) }}</td>
+        @if($product->gambar)
 
-                    <td>
-                        <a href="{{ route('products.edit',$item->id) }}"
-                           class="btn btn-warning btn-sm">
-                            Edit
-                        </a>
+            <div class="mb-3">
+                <img
+                    src="{{ asset('storage/' . $product->gambar) }}"
+                    width="200"
+                    class="img-thumbnail"
+                    alt="{{ $product->judul }}"
+                >
+            </div>
 
-                        <form action="{{ route('products.destroy',$item->id) }}"
-                              method="POST"
-                              class="d-inline">
+        @endif
 
-                            @csrf
-                            @method('DELETE')
+        <input
+            type="file"
+            id="gambar"
+            name="gambar"
+            class="form-control"
+            accept="image/jpeg,image/png,image/webp"
+        >
 
-                            <button class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Hapus data?')">
-                                Hapus
-                            </button>
+        <small class="text-muted">
+            Kosongkan jika tidak ingin mengganti gambar.
+        </small>
 
-                        </form>
-                    </td>
+    </div>
 
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="6" class="text-center">
-                        Tidak ada data.
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
+    {{-- Tombol --}}
+    <div class="mt-4">
 
-    </table>
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Update Product
+        </button>
+
+        <a
+            href="{{ route('products.index') }}"
+            class="btn btn-secondary"
+        >
+            Batal
+        </a>
+
+    </div>
+
+</form>
 </div>
+
 @endsection

@@ -1,56 +1,177 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Tambah Product')
 
 @section('content')
-<div class="container">
 
-    <h3 class="mb-4">Tambah Product</h3>
+<!-- Memanggil file CSS dan Icon FontAwesome agar visual form seragam -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
-    <form action="{{ route('products.store') }}"
-          method="POST"
-          enctype="multipart/form-data">
+<!-- Summernote CSS -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<!-- jQuery (diperlukan untuk Summernote) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Summernote JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 
-        @csrf
+<script>
+    $(document).ready(function() {
+        $('#editor').summernote({
+            placeholder: 'Masukkan isi product...',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    });
+</script>
 
-        <div class="mb-3">
-            <label>Judul</label>
-            <input type="text"
-                   name="judul"
-                   class="form-control"
-                   value="{{ old('judul') }}">
+<div class="main-wrapper">
+    <!-- Membatasi lebar form agar proporsional -->
+    <div class="container" style="max-width: 800px;">
+        
+        <div class="card">
+            
+            <!-- Bagian Header Form -->
+            <div class="header-section" style="margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px;">
+                <h1 style="font-size: 24px;"><i class="fa-solid fa-square-plus" style="color: #566270; margin-right: 8px;"></i>Tambah Product</h1>
+            </div>
+
+            <!-- Blok Pesan Error Validasi Global -->
+            @if($errors->any())
+                <div class="alert-danger" style="background:#fef2f2; color:#991b1b; border: 1px solid #fca5a5; padding:14px 18px; border-radius:12px; margin-bottom:20px; font-size: 14px;">
+                    <ul style="margin-left: 20px;">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Form input data baru -->
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <!-- Input Judul -->
+                <div class="form-group">
+                    <label for="judul">Judul Product</label>
+                    <input 
+                        type="text" 
+                        id="judul"
+                        name="judul" 
+                        value="{{ old('judul') }}" 
+                        placeholder="Masukkan judul product..." 
+                        required>
+                </div>
+
+                <!-- Preview dan Input Gambar -->
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>Gambar Product</label>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span style="display: block; font-size: 12px; color: #64748b; margin-bottom: 6px;">Pratinjau gambar:</span>
+                        <div style="width: 150px; height: 150px; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; background-color: #f8fafc; padding: 4px;">
+                           <img id="imgPreview"
+                                src=""
+                                alt="Preview Gambar"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: none;">
+
+                            <i id="placeholderIcon"
+                               class="fa-regular fa-image"
+                               style="font-size: 32px; color: #cbd5e1;"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="gambar">Upload Gambar</label>
+                        <input 
+                            type="file" 
+                            id="gambar"
+                            name="gambar" 
+                            accept="image/*"
+                            style="padding: 8px 12px;">
+                        <small style="color: #64748b; display: block; margin-top: 4px; font-size: 12px;">
+                            Format yang didukung: JPG, JPEG, PNG, atau WEBP. MAX 2MB.  
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Input Deskripsi dengan Summernote Editor -->
+                <div class="form-group">
+                    <label for="editor">Isi / Deskripsi Product</label>
+                    <textarea id="editor" name="isi">{{ old('isi') }}</textarea>
+                </div>
+
+                <!-- Input Urutan -->
+                <div class="form-group">
+                    <label for="urutan">Urutan Tampilan</label>
+                    <input 
+                        type="number" 
+                        id="urutan"
+                        name="urutan" 
+                        value="{{ old('urutan', 0) }}" 
+                        min="0"
+                        required>
+                </div>
+
+                <!-- Kelompok Tombol Aksi Bawah (Kembali di kiri, Simpan di kanan) -->
+                <div class="btn-group" style="display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 35px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                    <a href="{{ route('products.index') }}" class="btn btn-back" style="background: #64748b; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali
+                    </a>
+
+                    <button type="submit" class="btn btn-save" style="background: #10b981; color: #fff; border: none; cursor: pointer; padding: 10px 20px; border-radius: 6px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan Data
+                    </button>
+                </div>
+
+            </form>
+
         </div>
+    </div>
 
-        <div class="mb-3">
-            <label>Isi</label>
-            <textarea name="isi"
-                      rows="6"
-                      class="form-control">{{ old('isi') }}</textarea>
+    <!-- Footer Konsisten -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">Dokumentasi</a>
+            <a href="#">Bantuan</a>
+            <a href="#">Kontak</a>
         </div>
-
-        <div class="mb-3">
-            <label>Urutan</label>
-            <input type="number"
-                   name="urutan"
-                   class="form-control"
-                   value="{{ old('urutan',0) }}">
+        <div class="footer-copyright">
+            &copy; 2026 Admin. Intex
         </div>
-
-        <div class="mb-3">
-            <label>Gambar</label>
-            <input type="file"
-                   name="gambar"
-                   class="form-control">
-        </div>
-
-        <button class="btn btn-primary">
-            Simpan
-        </button>
-
-        <a href="{{ route('products.index') }}"
-           class="btn btn-secondary">
-            Kembali
-        </a>
-
-    </form>
-
+    </footer>
 </div>
+
+<script>
+// Script untuk menampilkan pratinjau gambar saat file dipilih
+document.getElementById('gambar').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const img = document.getElementById('imgPreview');
+            const icon = document.getElementById('placeholderIcon');
+
+            img.src = event.target.result;
+            img.style.display = 'block';
+            icon.style.display = 'none';
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+
 @endsection

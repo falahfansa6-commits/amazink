@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Product as ModelsProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('urutan')->get();
+        $products = Product::orderBy('urutan', 'asc')->get();
 
         return view('products.index', compact('products'));
     }
@@ -33,7 +32,7 @@ class ProductController extends Controller
         $data = $request->only([
             'judul',
             'isi',
-            'urutan'
+            'urutan',
         ]);
 
         if ($request->hasFile('gambar')) {
@@ -43,16 +42,15 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('products.index')
+        return redirect()
+            ->route('products.index')
             ->with('success', 'Data berhasil ditambahkan.');
     }
 
-   public function edit($id)
-{
-    $product = Product::findOrFail($id);
-
-    return view('products.edit', compact('product'));
-}
+    public function edit(Product $product)
+    {
+        return view('products.edit', compact('product'));
+    }
 
     public function update(Request $request, Product $product)
     {
@@ -81,7 +79,8 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('products.index')
+        return redirect()
+            ->route('products.index')
             ->with('success', 'Data berhasil diubah.');
     }
 
@@ -93,7 +92,8 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index')
+        return redirect()
+            ->route('products.index')
             ->with('success', 'Data berhasil dihapus.');
     }
 }
