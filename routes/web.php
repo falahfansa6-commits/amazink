@@ -10,9 +10,6 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\OurValueController;
 use App\Http\Controllers\OurValueImageController;
-use App\Http\Controllers\Produk1Controller;
-use App\Http\Controllers\Produk2Controller;
-use App\Http\Controllers\Produk3Controller;
 use App\Http\Controllers\SecoundController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TheprodukController;
@@ -29,9 +26,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\HubKontakController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebsiteKontakController;
-use App\Http\Controllers\SomeProductController;
+use App\Http\Controllers\ProductController;
 
-Route::resource('someproduct',SomeProductController::class);
+Route::resource('products', ProductController::class);
+
+
 
 Route::get('/kontak', [WebsiteKontakController::class, 'index']);
 
@@ -108,9 +107,6 @@ Route::resource('location', LocationController::class);
 Route::resource('tentang', TentangController::class);
 Route::resource('ourvalues', OurValueController::class);
 Route::resource('ourvalueimage', OurValueImageController::class);
-Route::resource('produk1', Produk1Controller::class)->except('show');
-Route::resource('produk2', Produk2Controller::class);
-Route::resource('produk3', Produk3Controller::class);
 Route::resource('secound', SecoundController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('theproduk', TheprodukController::class);

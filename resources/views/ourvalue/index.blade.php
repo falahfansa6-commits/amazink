@@ -53,7 +53,7 @@
                             <td class="judul-text">{{ $item->judul }}</td>
                             
                             <!-- Kolom Deskripsi dengan memanfaatkan class baris teks bawaan -->
-                           <td class="text-muted-row">
+                           <td  class="pts-right-description">
                             {!! $item->isi !!}
                                </td>
                             

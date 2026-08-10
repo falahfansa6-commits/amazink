@@ -1,0 +1,128 @@
+/* Container utama pembungkus card */
+.card-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    max-width: 1000px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Header di dalam card (Judul dan Tombol Tambah) */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    color: #1e293b;
+    font-size: 22px;
+    margin: 0;
+}
+
+/* Tombol Tambah Product */
+.btn-add {
+    background-color: #6b1f2e;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Mengatur Tabel agar border hilang dan menyentuh sisi */
+table.flush-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none; /* Hilangkan border luar */
+}
+
+/* Bagian Header Tabel (Merah melengkung) */
+table.flush-table thead tr {
+    background-color: #e60000; /* Warna merah sesuai gambar */
+    color: white;
+    text-align: left;
+}
+
+table.flush-table th {
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Membuat sudut header melengkung di kiri dan kanan atas */
+table.flush-table th:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+table.flush-table th:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Bagian Isi / Body Tabel */
+table.flush-table td {
+    padding: 16px;
+    font-size: 14px;
+    color: #333333;
+    border-bottom: 1px solid #f1f5f9; /* Garis tipis horizontal antar baris */
+}
+
+/* Tombol Aksi di dalam tabel */
+.btn-edit {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 6px;
+}
+
+.btn-delete {
+    background-color: #7f1d1d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Footer bawah tabel (Tombol Kembali & Pagination) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-back {
+    background-color: #475569;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pagination-info {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.pagination-buttons button {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #64748b;
+    margin-left: 4px;
+}

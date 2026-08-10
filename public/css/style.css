@@ -1,7 +1,4 @@
-/* ========================= */
-/* STYLE NAVBAR */
-/* ========================= */
-/* --- 1. PENGATURAN WARNA & FONT --- */
+
 :root {
     --warna-tombol: #FF4500;
     --warna-teks-tombol: #ffffff;
@@ -186,6 +183,14 @@ body {
     width: 40%;
     padding: 148px;
     background: #f5f5f5;
+}
+.text-limit {
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .text h1{
@@ -415,7 +420,14 @@ body {
     font-size: 0.95rem;
     line-height: 1.5;
     color: #222222;
+
+    max-width: 20ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
+
 
 /* printing solution */
 .pts-section-container {
@@ -454,20 +466,47 @@ body {
 
 .pts-right-description {
     flex: 1.5;
+    max-width: 60ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .pts-small-text {
-    font-size: 1.1rem;
+    max-width: 60ch;
+    line-height: 1.6;
+    text-align: justify;
+     font-size: 1.1rem;
     line-height: 1.6;
     color: #000000;
-    text-align: justify;
+    
 }
+.pts-right-description12 {
+    flex: 1.5;
+    max-width: 30ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.pts-small-text {
+    max-width: 60ch;
+    line-height: 1.6;
+    text-align: justify;
+     font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+    
+}
+
+
 
 .pts-highlight-link {
     color: #e11d24;
     text-decoration: underline;
     font-weight: 700;
 }
+
 
 /* FOOTER */
 * {
@@ -1292,6 +1331,28 @@ html {
     }
 }
 
+
+/* djcd*/
+.lk-location-link{
+    color: #e11d24;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.lk-location-link:visited{
+    color: #e11d24;
+}
+
+.lk-location-link:hover{
+    color: #e11d24;
+    text-decoration: none;
+}
+
+.lk-location-link:active{
+    color: #e11d24;
+}
 /* ==============================
    FLOATING SOCIAL MENU
 ================================ */
@@ -1391,4 +1452,5 @@ html {
 /* Hover */
 .floating-item:hover {
     transform: scale(1.1) !important;
+
 }

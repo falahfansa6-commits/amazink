@@ -33,7 +33,7 @@
             <!-- Preview Gambar Saat Ini memanfaatkan class img-thumbnail-wrapper -->
             <div class="form-group">
                 <label>Gambar Saat Ini</label>
-                <div class="img-thumbnail-wrapper" style="width: 200px; height: auto;">
+                <div class="img-thumbnail-wrapper" style="width: 100px; height: auto;">
                     <img src="{{ asset($ourvalueimage->gambar) }}" alt="Preview Gambar">
                 </div>
             </div>
@@ -50,7 +50,8 @@
                         type="file" 
                         id="gambar"
                         name="gambar">
-                    <small class="text-muted-row" style="margin-top: 4px; display: block;">*Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                    <small class="text-muted-row" style="margin-top: 4px; display: block;">*Biarkan kosong jika tidak ingin mengubah gambar. <br>
+                    Format yang didukung: JPG, JPEG, PNG, atau WEBP. MAX 2MB.</small>
                 </div>
 
                 <!-- Kelompok Tombol Aksi menggunakan wrapper .aksi bawaan CSS -->

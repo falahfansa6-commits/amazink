@@ -135,6 +135,8 @@
 
     @foreach($produk1    as $item)
 
+    @foreach($produk1 as $item)
+
 <section id="produk{{ $item->urutan }}" class="item-section">
 
     <div class="item-left">
@@ -186,7 +188,6 @@
 </section>
 
 @endforeach
-
 
       <div class="floating-menu" id="floatingMenu">
     <a href="https://wa.me/082133339489"
@@ -313,6 +314,11 @@ floatingButton.addEventListener('pointerup', function(e) {
 });
 </script>
 
+=======
+     
+  
+  @include('layouts.floating')
+>>>>>>> b7edde4910226874733fa8b562e359ba311c8ee7
     <!-- FOOTER -->
     <footer class="printex-footer">
         @include('layouts.footer')

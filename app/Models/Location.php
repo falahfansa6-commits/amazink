@@ -9,5 +9,6 @@ class Location extends Model
     protected $fillable = [
         'nama_kota',
         'alamat',
+        'ling',
     ];
 }

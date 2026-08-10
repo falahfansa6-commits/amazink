@@ -6,7 +6,7 @@
 
     <h2>Edit Some Product</h2>
 
-    <form action="{{ route('someproduct.update', $someProduct) }}"
+    <form action="{{ route('someproduct.update', ['someproduct' => $someProduct->id]) }}"
         method="POST"
         enctype="multipart/form-data">
 

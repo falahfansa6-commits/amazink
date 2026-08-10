@@ -495,6 +495,25 @@ h1{
     object-fit: cover;
 }
 
+
+.pts-right-description {
+    flex: 1.5;
+    max-width: 60ch;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.pts-small-text {
+    max-width: 60ch;
+    line-height: 1.6;
+    text-align: justify;
+     font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+    
+}
+
 /* ==========================
    PENYESUaIAN RESPONSIVE ALL DEVICES
 ========================== */
@@ -601,4 +620,58 @@ h1{
         margin-right: 6px;
         font-size: 12px;
     }
+}
+
+/*note editor*/
+/* Summernote */
+.note-editor {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Toolbar */
+.note-toolbar {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Area editor */
+.note-editor .note-editable {
+    min-height: 250px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+/* Konten di dalam editor */
+.note-editor .note-editable p,
+.note-editor .note-editable div,
+.note-editor .note-editable span {
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Gambar agar tidak melebihi editor */
+.note-editor .note-editable img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tabel */
+.note-editor .note-editable table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* iframe/video */
+.note-editor .note-editable iframe {
+    max-width: 100%;
 }

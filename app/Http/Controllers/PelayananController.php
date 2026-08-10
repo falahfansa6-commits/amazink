@@ -22,7 +22,11 @@ class PelayananController extends Controller
         $theproduk = Theproduk::orderBy('urutan', 'asc')->get();
 
         $produk1 = Produk1::latest()->get();
+<<<<<<< HEAD
        
+=======
+    
+>>>>>>> b7edde4910226874733fa8b562e359ba311c8ee7
         $theprodukimage = Theprodukimage::latest()->first();
 
         return view('pelayanan', compact(
